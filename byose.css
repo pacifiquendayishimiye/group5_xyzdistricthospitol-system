@@ -10,7 +10,7 @@ img {
   height: auto;
 }
 
-/* ================= NAVBAR ================= */
+/* ================= NAVBAR css ================= */
 .navbar {
   display: flex;
   justify-content: space-between;
