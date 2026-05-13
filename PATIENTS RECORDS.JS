@@ -11,7 +11,7 @@ const table = document.getElementById("patientTable");
 
 // ==========================
 // CALCULATE AGE
-// ==========================
+
 function calculateAge(dob){
   let birth = new Date(dob);
   let today = new Date();
