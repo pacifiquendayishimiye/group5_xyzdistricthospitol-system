@@ -21,6 +21,7 @@ let hivTips = [
   }
 ];
 
+
 function displayHIV() {
   const container = document.getElementById("hivContainer");
   container.innerHTML = "";
