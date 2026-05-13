@@ -46,7 +46,7 @@ color:blue
 .nav-links a:hover {
   background: hwb(216 11% 17%);
   color:hsl(214, 23%, 94%);
-  transform: scale:(0.95);
+ 
 }
 .dark-btn{
 background:#222;
