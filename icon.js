@@ -5,7 +5,7 @@ document.addEventListener("DOMContentLoaded", function(){
   // Reba niba button ibonetse
   if(!btn) return;
 
-  // Reba niba yari yarahisemo dark mbere
+  // Reba niba yari yarahisemo dark mbere nibyo
   if(localStorage.getItem("mode") === "dark"){
     document.body.classList.add("dark");
     btn.textContent = "☀️";
