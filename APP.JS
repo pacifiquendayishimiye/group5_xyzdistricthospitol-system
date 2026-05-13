@@ -10,6 +10,7 @@ const doctors = {
   Emergency: ["Dr Olivier"]
 };
 
+
 const department = document.getElementById("department");
 const doctor = document.getElementById("doctor");
 
