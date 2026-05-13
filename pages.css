@@ -1,0 +1,62 @@
+/* RESET */
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #f4f8fb;
+}
+
+/* CONTAINER */
+.container {
+  max-width: 900px;
+  margin: 50px auto;
+  padding: 20px;
+}
+
+/* CARD STYLE */
+.content-box {
+  background: #ffffff;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+}
+
+/* TITLE */
+h1 {
+  color: #0077b6;
+  margin-bottom: 15px;
+}
+
+/* TEXT */
+p {
+  color: #444;
+  line-height: 1.7;
+  font-size: 16px;
+}
+
+
+/* BACK BUTTON (UPDATED) */
+.back-btn {
+  display: inline-block;
+  margin-top: 25px;
+  padding: 12px 22px;
+  background: linear-gradient(135deg, #0077b6, #00b4d8);
+  color: white;
+  text-decoration: none;
+  border-radius: 30px;
+  font-weight: bold;
+  letter-spacing: 0.5px;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+
+/* HOVER EFFECT */
+.back-btn:hover {
+  transform: translateY(-3px) scale(1.05);
+  background: linear-gradient(135deg, #023e8a, #0077b6);
+  box-shadow: 0 6px 18px rgba(0,0,0,0.3);
+}
+
+/* CLICK EFFECT */
+.back-btn:active {
+  transform: scale(0.95);
+}

@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Appointments Dashboard</title>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Admin Dashboard</title>
+<link rel="stylesheet" href="admin-for-header.css">
+<style>
+body{
+margin:0;
+font-family:Arial;
+background:#f4f7fb;
+}
+
+</style>
+</head>
+
+<body>
+
+
+
+
+
+
+<script>
+
+
+function logout(){
+
+localStorage.removeItem("role");
+
+window.location.href="adimin";
+
+}
+
+
+let password = prompt("Enter Admin Password");
+
+if(password !== "1234"){
+
+alert("Wrong Password");
+
+window.location.href = "index.html";
+
+}
+
+function logout(){
+
+window.location.href = "index.html";
+
+}
+
+
+</script>
+
+
+
+
+
+<header>
+<!-- HEADER -->
+<div class="header">
+<a href="adimin.html"> <img src="LOGOO.png" class="logo"></a>
+
+<nav class="Links">
+  <ul class="nav-links">
+    <a href="#">Dashboard</a>
+      <a href="PATIENTS RECORDS.HTML">PATIENTS RECORDS</a>
+        <a href="view-appointments.html">view appointment</a>
+          <a href="pharmacyofadmin.html">pharmacy</a>
+            <a href="herphtipsofadmin.html">healthTips</a>
+             <a href="emergencyofadmin.html">emergencyofadmin</a>
+  </ul>
+</nav>
+
+<button id="darkModeToggle" class="dark-btn">🌙</button>
+
+
+<button onclick="logout()" style="padding:12px 25px; background:#d90429; color:white; border:none; border-radius:8px; font-size:16px; font-weight:bold; cursor:pointer;">
+🚪 Logout
+</button>
+</div>
+</header>
+
+
+
+<style>
+body{
+margin:0;
+font-family:Arial;
+background:linear-gradient(135deg,#f1f4fa,#e1e5eb);
+padding:20px;
+color:#333;
+}
+
+/* container */
+.container{
+max-width:1000px;
+margin:auto;
+background:white;
+padding:25px;
+border-radius:12px;
+box-shadow:0 10px 25px rgba(0,0,0,0.3);
+}
+
+/* title */
+h1{
+text-align:center;
+color:#15d63f;
+}
+
+/* logout button */
+.logout{
+float:right;
+padding:10px 20px;
+background:#d90429;
+color:white;
+border:none;
+border-radius:8px;
+cursor:pointer;
+font-weight:bold;
+}
+
+.logout:hover{
+background:#a8001f;
+}
+
+/* search */
+input{
+padding:10px;
+width:60%;
+margin:10px 0;
+border:1px solid #ccc;
+border-radius:6px;
+}
+
+/* table */
+table{
+width:100%;
+border-collapse:collapse;
+margin-top:20px;
+}
+
+th{
+background:#157da7;
+color:white;
+padding:12px;
+}
+
+td{
+padding:10px;
+text-align:center;
+border-bottom:1px solid #ddd;
+}
+
+tr:hover{
+background:#f1f1f1;
+}
+
+/* delete button */
+button.delete{
+padding:6px 10px;
+background:red;
+color:white;
+border:none;
+border-radius:5px;
+cursor:pointer;
+}
+
+button.delete:hover{
+background:darkred;
+}
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<button class="logout" onclick="logout()">Logout</button>
+
+<h1>Appointments Dashboard</h1>
+
+<input type="text" id="search" placeholder="Search..." onkeyup="loadData()">
+
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Mutuelle</th>
+<th>Phone</th>
+<th>Department</th>
+<th>Doctor</th>
+<th>Date</th>
+<th>Time</th>
+<th>Status</th>
+<th>Action</th>
+</tr>
+</thead>
+
+<tbody id="table"></tbody>
+</table>
+
+</div>
+
+<script>
+
+// LOAD DATA
+function loadData(){
+
+let data = JSON.parse(localStorage.getItem("appointments")) || [];
+let search = document.getElementById("search").value.toLowerCase();
+
+let rows = "";
+
+data.forEach((item,index)=>{
+
+if(
+item.name.toLowerCase().includes(search) ||
+item.phone.toLowerCase().includes(search) ||
+item.department.toLowerCase().includes(search)
+){
+
+rows += `
+<tr>
+<td>${item.name}</td>
+<td>${item.mutuelle}</td>
+<td>${item.phone}</td>
+<td>${item.department}</td>
+<td>${item.doctor}</td>
+<td>${item.date}</td>
+<td>${item.time}</td>
+<td>${item.status}</td>
+<td>
+<button class="delete" onclick="deleteData(${index})">Delete</button>
+</td>
+</tr>
+`;
+
+}
+
+});
+
+document.getElementById("table").innerHTML = rows;
+
+}
+
+// DELETE
+function deleteData(index){
+
+let data = JSON.parse(localStorage.getItem("appointments")) || [];
+data.splice(index,1);
+localStorage.setItem("appointments", JSON.stringify(data));
+loadData();
+
+}
+
+// LOGOUT
+function logout(){
+
+localStorage.removeItem("role"); // optional security
+window.location.href = "adini.html";
+
+}
+
+// INIT
+loadData();
+
+</script>
+   
+<footer class="footer">
+
+  <div class="footer-container">
+
+    <!-- CONTACT -->
+    <div class="footer-box">
+      <h3>Contact Us</h3>
+      <p>Email: info@xyzhospital.rw</p>
+      <p>Phone: +250 788 999 000</p>
+      <p>Emergency: 911 / 912</p>
+      <p>Address: XYZ District Hospital, Rwanda</p>
+    </div>
+
+    
+
+    <!-- QUICK LINKS -->
+    <div class="footer-box">
+      <h3>Quick Links</h3>
+      <a href="login.html">login</a>
+      <a href="index.html">Home</a>
+      <a href="SERVICES.HTML">Services</a>
+   
+      <a href="CONTACT.HTML">Contact</a>
+        <a href="LOGIN.HTML">LOGIN</a>
+       <a href="LOGIN.HTML">LOGIN OF ADMIN</a>
+    </div>
+
+    <!-- SOCIAL MEDIA -->
+    <div class="footer-box">
+      <h3>Follow Us</h3>
+
+      <div class="social-icons">
+        <a href="https://www.facebook.com" target="_blank">
+          <i class="fab fa-facebook-f"></i>
+        </a>
+
+        <a href="https://x.com/YOUR_PAGE" target="_blank">
+          <i class="fab fa-twitter"></i>
+        </a>
+
+        <a href="https://wa.me/250788999000" target="_blank">
+          <i class="fab fa-whatsapp"></i>
+        </a>
+      </div>
+    </div>
+
+    <!-- GOOGLE MAP -->
+    <div class="footer-box">
+      <h3>Our Location</h3>
+
+      <iframe 
+        src="https://www.google.com/maps?q=Rutongo+District+Hospital&output=embed"
+        width="100%" 
+        height="180"
+        style="border:0;"
+        loading="lazy">
+      </iframe>
+
+      <a href="https://maps.google.com/?q=Rutongo+District+Hospital" target="_blank" class="map-btn">
+        Open in Google Maps
+      </a>
+    </div>
+
+  </div>
+
+  <!-- BOTTOM -->
+  <div class="footer-bottom">
+    <p>© 2026 XYZ District Hospital | All rights reserved</p>
+  </div>
+
+</footer>
+</footer>
+
+
+
+
+<script src="drakmodyomuriadmin.js"></script>
+</body>
+</html>
+</body>
+</html>

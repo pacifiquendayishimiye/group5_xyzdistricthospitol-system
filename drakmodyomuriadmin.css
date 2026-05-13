@@ -1,0 +1,51 @@
+/* DARK BUTTON */
+.dark-btn{
+  background:#222;
+  color:white;
+  border:none;
+  padding:8px 12px;
+  border-radius:50%;
+  cursor:pointer;
+  margin-left:10px;
+}
+
+/* GENERAL DARK */
+.dark-mode{
+  background:#121212;
+  color:white;
+}
+
+/* HEADER DARK */
+.dark-mode .header{
+  background:#111;
+}
+
+/* MENU DARK */
+.dark-mode .menu button{
+  background:#222;
+}
+
+.dark-mode .menu button:hover{
+  background:#444;
+}
+
+/* TABLE DARK */
+.dark-mode table{
+  background:#1e1e1e;
+  color:white;
+}
+
+.dark-mode th{
+  background:#333;
+}
+
+.dark-mode td{
+  border-bottom:1px solid #444;
+}
+
+/* INPUT DARK */
+.dark-mode input{
+  background:#222;
+  color:white;
+  border:1px solid #555;
+}

@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Services - XYZ Hospital</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+<link rel="stylesheet" href="SERVIC.CSS">
+<link rel="stylesheet" href="icon.css">
+</head>
+
+<body>
+
+<header class="navbar">
+
+  <div class="logo-section">
+   <a href="index.html"> <img src="LOGOO.png" class="logo"></a>
+    <h3 data-key="title">XYZ District<br> Hospital</h3>
+  </div>
+
+  <nav class="nav-links">
+    <a href="index.html" data-key="home">HOME</a>
+    <a href="SERVICE.HTML" class="active" data-key="services">SERVICES</a>
+
+   
+    <a href="PHARMACY.HTML" data-key="pharmacy">PHARMACY</a>
+    <a href="HEALTH TIPS.HTML" data-key="tips">HEALTH TIPS</a>
+    <a href="CONTACT.HTML" data-key="contact">CONTACT</a>
+   
+
+    <!-- LANGUAGE -->
+    <div class="dropdown">
+      <button class="dropbtn" id="langBtn">English ▾</button>
+      <div class="dropdown-content">
+        <a href="javascript:void(0)" onclick="changeLang('en')">English</a>
+        <a href="javascript:void(0)" onclick="changeLang('rw')">Kinyarwanda</a>
+        <a href="javascript:void(0)" onclick="changeLang('fr')">French</a>
+      </div>
+    </div>
+
+  </nav>
+
+  <button id="darkModeToggle">🌙</button>
+</header>
+
+<section class="departments">
+
+  <h2 data-key="deptTitle">Hospital Departments</h2>
+  <p class="subtitle" data-key="subtitle">XYZ District Hospital Services</p>
+
+  <div class="dept-container">
+
+    <div class="dept-card">
+      <h3>Outpatient (OPD)</h3>
+      <p data-key="opd">Consultation and treatment without admission.</p>
+      <p><strong>Head:</strong> Dr. John Doe</p>
+      <button data-key="learn" onclick="openModal('opd')">Learn More</button>
+    </div>
+
+    <div class="dept-card">
+      <h3>Maternity</h3>
+      <p data-key="maternity">Pregnancy and newborn care services.</p>
+      <p><strong>Head:</strong> Dr. Alice</p>
+      <button data-key="learn" onclick="openModal('maternity')">Learn More</button>
+    </div>
+
+    <div class="dept-card">
+      <h3>Pediatrics</h3>
+      <p data-key="pediatrics">Healthcare services for children.</p>
+      <p><strong>Head:</strong> Dr. Eric</p>
+      <button data-key="learn" onclick="openModal('pediatrics')">Learn More</button>
+    </div>
+
+    <div class="dept-card">
+      <h3>Pharmacy</h3>
+      <p data-key="pharmacyDesc">Medicines and prescriptions.</p>
+      <p><strong>Head:</strong> Mr. Bosco</p>
+      <button data-key="learn" onclick="openModal('pharmacy')">Learn More</button>
+    </div>
+
+    <div class="dept-card">
+      <h3>Laboratory</h3>
+      <p data-key="lab">Medical tests and diagnostics.</p>
+      <p><strong>Head:</strong> Dr. Marie</p>
+      <button data-key="learn" onclick="openModal('lab')">Learn More</button>
+    </div>
+
+    <div class="dept-card">
+      <h3>Dental</h3>
+      <p data-key="dental">Oral and dental care.</p>
+      <p><strong>Head:</strong> Dr. Diane</p>
+      <button data-key="learn" onclick="openModal('dental')">Learn More</button>
+    </div>
+
+  </div>
+</section>
+
+<!-- MODAL -->
+<div id="modal" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="closeModal()">&times;</span>
+    <h2 id="modal-title"></h2>
+    <p id="modal-text"></p>
+  </div>
+</div>
+
+<script>
+function openModal(type){
+const data={
+opd:"Full outpatient services.",
+maternity:"Maternal care services.",
+pediatrics:"Child healthcare.",
+pharmacy:"Medicines and drugs.",
+lab:"Diagnostic tests.",
+dental:"Dental treatment."
+};
+
+document.getElementById("modal-title").innerText=type;
+document.getElementById("modal-text").innerText=data[type];
+document.getElementById("modal").style.display="block";
+}
+
+function closeModal(){
+document.getElementById("modal").style.display="none";
+}
+</script>
+
+<footer class="footer">
+
+  <div class="footer-container">
+
+    <!-- CONTACT -->
+    <div class="footer-box">
+      <h3>Contact Us</h3>
+      <p>Email: info@xyzhospital.rw</p>
+      <p>Phone: +250 788 999 000</p>
+      <p>Emergency: 911 / 912</p>
+      <p>Address: XYZ District Hospital, Rwanda</p>
+    </div>
+
+    
+
+    <!-- QUICK LINKS -->
+    <div class="footer-box">
+      <h3>Quick Links</h3>
+      <a href="login.html">login</a>
+      <a href="index.html">Home</a>
+      <a href="SERVICES.HTML">Services</a>
+  
+      <a href="CONTACT.HTML">Contact</a>
+        <a href="LOGIN.HTML">LOGIN</a>
+       <a href="LOGIN.HTML">LOGIN OF ADMIN</a>
+    </div>
+
+    <!-- SOCIAL MEDIA -->
+    <div class="footer-box">
+      <h3>Follow Us</h3>
+
+      <div class="social-icons">
+        <a href="https://www.facebook.com" target="_blank">
+          <i class="fab fa-facebook-f"></i>
+        </a>
+
+        <a href="https://x.com/YOUR_PAGE" target="_blank">
+          <i class="fab fa-twitter"></i>
+        </a>
+
+        <a href="https://wa.me/250788999000" target="_blank">
+          <i class="fab fa-whatsapp"></i>
+        </a>
+      </div>
+    </div>
+
+    <!-- GOOGLE MAP -->
+    <div class="footer-box">
+      <h3>Our Location</h3>
+
+      <iframe 
+        src="https://www.google.com/maps?q=Rutongo+District+Hospital&output=embed"
+        width="100%" 
+        height="180"
+        style="border:0;"
+        loading="lazy">
+      </iframe>
+
+      <a href="https://maps.google.com/?q=Rutongo+District+Hospital" target="_blank" class="map-btn">
+        Open in Google Maps
+      </a>
+    </div>
+
+  </div>
+
+  <!-- BOTTOM -->
+  <div class="footer-bottom">
+    <p>© 2026 XYZ District Hospital | All rights reserved</p>
+  </div>
+
+</footer>
+<script src="icon.js"></script>
+</footer>
+
+<!-- LANGUAGE SCRIPT -->
+<script>
+const translations={
+en:{
+title:"XYZ District Hospital",
+home:"HOME",
+services:"SERVICES",
+appointments:"APPOINTMENTS",
+records:"PATIENTS RECORDS",
+pharmacy:"PHARMACY",
+tips:"HEALTH TIPS",
+contact:"CONTACT",
+login:"LOGIN",
+deptTitle:"Hospital Departments",
+subtitle:"XYZ District Hospital Services",
+learn:"Learn More",
+opd:"Consultation and treatment without admission.",
+maternity:"Pregnancy care services.",
+pediatrics:"Child healthcare.",
+pharmacyDesc:"Medicines and prescriptions.",
+lab:"Medical tests.",
+dental:"Dental care.",
+contactUs:"Contact Us",
+quick:"Quick Links",
+follow:"Follow Us",
+copy:"© 2026 XYZ Hospital"
+},
+
+rw:{
+title:"Ibitaro bya XYZ",
+home:"AHABANZA",
+services:"SERIVISI",
+appointments:"GUSABA",
+records:"AMADOSIYE",
+pharmacy:"FARUMASI",
+tips:"INAMA",
+contact:"TUVUGANE",
+login:"INJIRA",
+deptTitle:"Amashami y'ibitaro",
+subtitle:"Serivisi z'ibitaro",
+learn:"Menya byinshi",
+opd:"Ubuvuzi budasaba kurara",
+maternity:"Serivisi z'ababyeyi",
+pediatrics:"Ubuvuzi bw'abana",
+pharmacyDesc:"Imiti",
+lab:"Ibipimo",
+dental:"Amenyo",
+contactUs:"Tuvugishe",
+quick:"Amahuza",
+follow:"Dukurikire",
+copy:"© 2026 Ibitaro bya XYZ"
+},
+
+fr:{
+title:"Hôpital XYZ",
+home:"ACCUEIL",
+services:"SERVICES",
+appointments:"RENDEZ-VOUS",
+records:"DOSSIERS",
+pharmacy:"PHARMACIE",
+tips:"CONSEILS",
+contact:"CONTACT",
+login:"CONNEXION",
+deptTitle:"Départements",
+subtitle:"Services hospitaliers",
+learn:"Voir plus",
+opd:"Consultation",
+maternity:"Maternité",
+pediatrics:"Pédiatrie",
+pharmacyDesc:"Médicaments",
+lab:"Laboratoire",
+dental:"Dentaire",
+contactUs:"Contact",
+quick:"Liens",
+follow:"Suivez-nous",
+copy:"© 2026 Hôpital XYZ"
+}
+};
+
+function changeLang(lang){
+document.querySelectorAll("[data-key]").forEach(el=>{
+const key=el.getAttribute("data-key");
+if(translations[lang][key]){
+el.textContent=translations[lang][key];
+}
+});
+document.getElementById("langBtn").textContent=lang.toUpperCase()+" ▾";
+localStorage.setItem("lang",lang);
+}
+
+window.onload=function(){
+changeLang(localStorage.getItem("lang")||"en");
+}
+</script>
+
+</body>
+</html>

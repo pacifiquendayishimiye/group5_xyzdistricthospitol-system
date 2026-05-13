@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact - XYZ District Hospital</title>
+  <link rel="stylesheet" href="CONTACT.CSS">
+  <link rel="stylesheet" href="icon.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+
+<body>
+
+<header class="navbar">
+  <div class="logo-section">
+     <a href="index.html"> <img src="LOGOO.png" class="logo"></a>
+    <h3 data-key="title">XYZ District Hospital</h3>
+  </div>
+
+  <nav class="nav-links">
+    <a href="index.html" data-key="home">HOME</a>
+    <a href="SERVICE.HTML" data-key="services">SERVICES</a>
+  
+    
+    <a href="PHARMACY.HTML" data-key="pharmacy">PHARMACY</a>
+    <a href="HEALTH TIPS.HTML" data-key="tips">HEALTH TIPS</a>
+    <a href="CONTACT.HTML" class="active" data-key="contact">CONTACT</a>
+    
+
+    <!-- LANGUAGE -->
+    <div class="dropdown">
+      <button class="dropbtn" id="langBtn">English ▾</button>
+      <div class="dropdown-content">
+        <a href="javascript:void(0)" onclick="changeLang('en')">English</a>
+        <a href="javascript:void(0)" onclick="changeLang('rw')">Kinyarwanda</a>
+        <a href="javascript:void(0)" onclick="changeLang('fr')">French</a>
+      </div>
+    </div>
+      <button id="darkModeToggle">🌙</button>
+  </nav>
+</header>
+
+<h2 class="contact-title" data-key="contactTitle">
+  Contact - XYZ District Hospital
+</h2>
+
+<div class="contact-container">
+
+  <!-- LEFT -->
+  <div class="contact-info">
+    <h3 data-key="info">Our Information</h3>
+    <p data-key="address">Address: XYZ District Hospital, Rwanda</p>
+    <p data-key="phone">Phone: +250 788 123 456</p>
+    <p data-key="emergency">Emergency: 911 / 912</p>
+    <p>Email: info@xyzhospital.rw</p>
+    <p data-key="ambulance">Ambulance: +250 788 999 000</p>
+
+    <h4 data-key="follow">Follow Us</h4>
+
+<div class="social-icons">
+  <a href="https://www.facebook.com">F</a>
+  <a href="https://www.facebook.com">X</a>
+  <a href="https://www.whatsapp.com">W</a>
+</div>
+  </div>
+
+  <form id="contactForm">
+  <input type="text" id="name" placeholder="Your Name" required>
+  <input type="email" id="email" placeholder="Email" required>
+  <input type="text" id="phone" placeholder="Phone">
+  <input type="text" id="subject" placeholder="Subject">
+  <textarea id="message" placeholder="Message..." required></textarea>
+
+  <button type="submit">Send Message</button>
+</form>
+<script src="icon.js"></script>
+</div>
+
+<!-- MAP -->
+<div class="map">
+  <iframe src="https://maps.google.com/maps?q=Rwanda&output=embed"></iframe>
+</div>
+
+<h3 class="feedback-title" data-key="feedback">Community Feedback</h3>
+
+<!-- FOOTER -->
+
+<footer class="footer">
+
+  <div class="footer-container">
+
+    <!-- CONTACT -->
+    <div class="footer-box">
+      <h3>Contact Us</h3>
+      <p>Email: info@xyzhospital.rw</p>
+      <p>Phone: +250 788 999 000</p>
+      <p>Emergency: 911 / 912</p>
+      <p>Address: XYZ District Hospital, Rwanda</p>
+    </div>
+
+    
+
+    <!-- QUICK LINKS -->
+    <div class="footer-box">
+      <h3>Quick Links</h3>
+      <a href="login.html">login</a>
+      <a href="index.html">Home</a>
+      <a href="SERVICES.HTML">Services</a>
+    
+      <a href="CONTACT.HTML">Contact</a>
+        <a href="LOGIN.HTML">LOGIN</a>
+       <a href="LOGIN.HTML">LOGIN OF ADMIN</a>
+    </div>
+
+    <!-- SOCIAL MEDIA -->
+    <div class="footer-box">
+      <h3>Follow Us</h3>
+
+      <div class="social-icons">
+        <a href="https://www.facebook.com" target="_blank">
+          <i class="fab fa-facebook-f"></i>
+        </a>
+
+        <a href="https://x.com/YOUR_PAGE" target="_blank">
+          <i class="fab fa-twitter"></i>
+        </a>
+
+        <a href="https://wa.me/250788999000" target="_blank">
+          <i class="fab fa-whatsapp"></i>
+        </a>
+      </div>
+    </div>
+
+    <!-- GOOGLE MAP -->
+    <div class="footer-box">
+      <h3>Our Location</h3>
+
+      <iframe 
+        src="https://www.google.com/maps?q=Rutongo+District+Hospital&output=embed"
+        width="100%" 
+        height="180"
+        style="border:0;"
+        loading="lazy">
+      </iframe>
+
+      <a href="https://maps.google.com/?q=Rutongo+District+Hospital" target="_blank" class="map-btn">
+        Open in Google Maps
+      </a>
+    </div>
+
+  </div>
+
+  <!-- BOTTOM -->
+  <div class="footer-bottom">
+    <p>© 2026 XYZ District Hospital | All rights reserved</p>
+  </div>
+
+</footer>
+
+<!-- ===== LANGUAGE SCRIPT ===== -->
+<script>
+const translations={
+en:{
+title:"XYZ District Hospital",
+home:"HOME",
+services:"SERVICES",
+appointments:"APPOINTMENTS",
+records:"PATIENTS RECORDS",
+pharmacy:"PHARMACY",
+tips:"HEALTH TIPS",
+contact:"CONTACT",
+login:"LOGIN",
+contactTitle:"Contact - XYZ District Hospital",
+info:"Our Information",
+address:"Address: XYZ District Hospital, Rwanda",
+phone:"Phone: +250 788 123 456",
+emergency:"Emergency: 911 / 912",
+ambulance:"Ambulance: +250 788 999 000",
+follow:"Follow Us",
+send:"Send Message",
+sendBtn:"Send Message",
+feedback:"Community Feedback",
+contactUs:"Contact Us",
+quick:"Quick Links",
+location:"Our Location",
+openMap:"Open in Google Maps",
+copy:"© 2026 XYZ Hospital"
+},
+
+rw:{
+title:"Ibitaro bya XYZ",
+home:"AHABANZA",
+services:"SERIVISI",
+appointments:"GUSABA SERIVISI",
+records:"AMADOSIYE",
+pharmacy:"FARUMASI",
+tips:"INAMA Z'UBUZIMA",
+contact:"TUVUGANE",
+login:"INJIRA",
+contactTitle:"Twandikire",
+info:"Amakuru yacu",
+address:"Aderesi: Ibitaro bya XYZ",
+phone:"Telefone: +250 788 123 456",
+emergency:"Ubutabazi bwihuse: 911",
+ambulance:"Ambulansi: +250 788 999 000",
+follow:"Dukurikire",
+send:"Ohereza ubutumwa",
+sendBtn:"Ohereza",
+feedback:"Ibitekerezo by'abaturage",
+contactUs:"Tuvugishe",
+quick:"Amahuza",
+location:"Aho duherereye",
+openMap:"Fungura kuri Map",
+copy:"© 2026 Ibitaro bya XYZ"
+},
+
+fr:{
+title:"Hôpital XYZ",
+home:"ACCUEIL",
+services:"SERVICES",
+appointments:"RENDEZ-VOUS",
+records:"DOSSIERS",
+pharmacy:"PHARMACIE",
+tips:"CONSEILS",
+contact:"CONTACT",
+login:"CONNEXION",
+contactTitle:"Contact",
+info:"Nos informations",
+address:"Adresse: Hôpital XYZ",
+phone:"Téléphone",
+emergency:"Urgence",
+ambulance:"Ambulance",
+follow:"Suivez-nous",
+send:"Envoyer message",
+sendBtn:"Envoyer",
+feedback:"Avis",
+contactUs:"Contactez-nous",
+quick:"Liens rapides",
+location:"Localisation",
+openMap:"Ouvrir sur Map",
+copy:"© 2026 Hôpital XYZ"
+}
+};
+
+function changeLang(lang){
+document.querySelectorAll("[data-key]").forEach(el=>{
+const key=el.getAttribute("data-key");
+if(translations[lang][key]){
+el.textContent=translations[lang][key];
+}
+});
+document.getElementById("langBtn").textContent=lang.toUpperCase()+" ▾";
+localStorage.setItem("lang",lang);
+}
+
+window.onload=function(){
+changeLang(localStorage.getItem("lang")||"en");
+}
+
+</script>
+<script src="CONTACT.JS"></script>
+</body>
+</html>

@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>GPS Emergency Dashboard</title>
+</head>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Admin Dashboard</title>
+<link rel="stylesheet" href="admin-for-header.css">
+<style>
+body{
+margin:0;
+font-family:Arial;
+background:#f4f7fb;
+}
+
+</style>
+</head>
+
+<body>
+
+
+
+
+
+
+<script>
+
+
+function logout(){
+
+localStorage.removeItem("role");
+
+window.location.href="adimin";
+
+}
+
+
+let password = prompt("Enter Admin Password");
+
+if(password !== "1234"){
+
+alert("Wrong Password");
+
+window.location.href = "index.html";
+
+}
+
+function logout(){
+
+window.location.href = "index.html";
+
+}
+
+
+</script>
+
+
+
+
+
+<header>
+<!-- HEADER -->
+<div class="header">
+<a href="adimin.html"> <img src="LOGOO.jfif" class="logo"></a>
+
+<nav class="Links">
+  <ul class="nav-links">
+    <a href="adimin.html">Dashboard</a>
+      <a href="PATIENTS RECORDS.HTML">PATIENTS RECORDS</a>
+        <a href="view-appointments.html">view appointment</a>
+          <a href="pharmacyofadmin.html">pharmacy</a>
+            <a href="herphtipsofadmin.html">healthTips</a>
+             <a href="emergencyofadmin.html">emergencyofadmin</a>
+  </ul>
+</nav>
+
+<button id="darkModeToggle" class="dark-btn">🌙</button>
+
+
+<button onclick="logout()" style="padding:12px 25px; background:#d90429; color:white; border:none; border-radius:8px; font-size:16px; font-weight:bold; cursor:pointer;">
+🚪 Logout
+</button>
+</div>
+</header>
+  
+<body style="
+font-family:Arial;
+padding:20px;
+background:#f4f7fb;
+">
+
+<h2>🚨 Emergency GPS Dashboard</h2>
+
+<button onclick="clearAll()" style="
+padding:10px 20px;
+background:red;
+color:white;
+border:none;
+border-radius:8px;
+cursor:pointer;
+">
+🗑 Delete All
+</button>
+
+<div id="box"></div>
+
+<script>
+
+// LOAD DATA
+function loadData(){
+
+let data =
+JSON.parse(localStorage.getItem("gpsOnly")) || [];
+
+let output = "";
+
+data.forEach((e,index)=>{
+
+output += `
+
+<div style="
+border:2px solid red;
+padding:15px;
+margin-top:15px;
+border-radius:10px;
+background:white;
+">
+
+<h3>🚑 Emergency</h3>
+
+<p><b>Time:</b> ${e.time}</p>
+
+<p><b>Latitude:</b> ${e.lat}</p>
+
+<p><b>Longitude:</b> ${e.lon}</p>
+
+<a target="_blank"
+href="https://www.google.com/maps?q=${e.lat},${e.lon}">
+📍 Open Location
+</a>
+
+<br><br>
+
+<button onclick="deleteOne(${index})" style="
+padding:8px 15px;
+background:red;
+color:white;
+border:none;
+border-radius:5px;
+cursor:pointer;
+">
+Delete
+</button>
+
+</div>
+
+`;
+
+});
+
+document.getElementById("box").innerHTML = output;
+
+}
+
+// DELETE ONE
+function deleteOne(index){
+
+let data =
+JSON.parse(localStorage.getItem("gpsOnly")) || [];
+
+data.splice(index,1);
+
+localStorage.setItem(
+"gpsOnly",
+JSON.stringify(data)
+);
+
+loadData();
+
+}
+
+// DELETE ALL
+function clearAll(){
+
+if(confirm("Delete all emergencies?")){
+
+localStorage.removeItem("gpsOnly");
+
+loadData();
+
+}
+
+}
+
+// AUTO REFRESH
+setInterval(loadData,3000);
+
+// FIRST LOAD
+loadData();
+
+</script>
+   
+<footer class="footer">
+
+  <div class="footer-container">
+
+    <!-- CONTACT -->
+    <div class="footer-box">
+      <h3>Contact Us</h3>
+      <p>Email: info@xyzhospital.rw</p>
+      <p>Phone: +250 788 999 000</p>
+      <p>Emergency: 911 / 912</p>
+      <p>Address: XYZ District Hospital, Rwanda</p>
+    </div>
+
+    
+
+    <!-- QUICK LINKS -->
+    <div class="footer-box">
+      <h3>Quick Links</h3>
+      <a href="login.html">login</a>
+      <a href="index.html">Home</a>
+      <a href="SERVICES.HTML">Services</a>
+   
+      <a href="CONTACT.HTML">Contact</a>
+        <a href="LOGIN.HTML">LOGIN</a>
+       <a href="LOGIN.HTML">LOGIN OF ADMIN</a>
+    </div>
+
+    <!-- SOCIAL MEDIA -->
+    <div class="footer-box">
+      <h3>Follow Us</h3>
+
+      <div class="social-icons">
+        <a href="https://www.facebook.com" target="_blank">
+          <i class="fab fa-facebook-f"></i>
+        </a>
+
+        <a href="https://x.com/YOUR_PAGE" target="_blank">
+          <i class="fab fa-twitter"></i>
+        </a>
+
+        <a href="https://wa.me/250788999000" target="_blank">
+          <i class="fab fa-whatsapp"></i>
+        </a>
+      </div>
+    </div>
+
+    <!-- GOOGLE MAP -->
+    <div class="footer-box">
+      <h3>Our Location</h3>
+
+      <iframe 
+        src="https://www.google.com/maps?q=Rutongo+District+Hospital&output=embed"
+        width="100%" 
+        height="180"
+        style="border:0;"
+        loading="lazy">
+      </iframe>
+
+      <a href="https://maps.google.com/?q=Rutongo+District+Hospital" target="_blank" class="map-btn">
+        Open in Google Maps
+      </a>
+    </div>
+
+  </div>
+
+  <!-- BOTTOM -->
+  <div class="footer-bottom">
+    <p>© 2026 XYZ District Hospital | All rights reserved</p>
+  </div>
+
+</footer>
+</footer>
+
+
+
+
+<script src="drakmodyomuriadmin.js"></script>
+</body>
+</html>
+</body>
+</html>

@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Book Appointment | XYZ Hospital</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, sans-serif;
+}
+
+body{
+    background:linear-gradient(135deg,#eaf4ff,#d7ebff);
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    padding:20px;
+}
+
+.container{
+    width:100%;
+    max-width:750px;
+    background:white;
+    border-radius:20px;
+    box-shadow:0 15px 40px rgba(0,0,0,0.08);
+    overflow:hidden;
+}
+
+.top{
+    background:linear-gradient(90deg,#0066cc,#00aaff);
+    color:white;
+    padding:25px;
+    text-align:center;
+}
+
+.top h1{
+    font-size:30px;
+}
+
+.nav-buttons{
+    display:flex;
+    justify-content:space-between;
+    padding:15px 20px;
+}
+
+.back-btn, .view-btn{
+    text-decoration:none;
+    padding:10px 14px;
+    border-radius:12px;
+    font-weight:bold;
+    transition:0.3s;
+    font-size:14px;
+}
+
+.back-btn{
+    background:#f1f5f9;
+    color:#0b3a82;
+}
+
+.view-btn{
+    background:#0066cc;
+    color:white;
+}
+
+.form-area{
+    padding:25px;
+}
+
+.row{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:16px;
+    margin-bottom:15px;
+}
+
+.group{
+    margin-bottom:12px;
+}
+
+label{
+    display:block;
+    margin-bottom:6px;
+    font-weight:bold;
+    font-size:14px;
+    color:#333;
+}
+
+input,select,textarea{
+    width:100%;
+    padding:12px;
+    border:1px solid #d1d5db;
+    border-radius:10px;
+}
+
+button{
+    width:100%;
+    padding:14px;
+    border:none;
+    border-radius:12px;
+    background:linear-gradient(90deg,#0066cc,#00aaff);
+    color:white;
+    font-size:16px;
+    font-weight:bold;
+    cursor:pointer;
+}
+
+.success{
+    display:none;
+    margin-top:15px;
+    padding:15px;
+    background:#e8fff0;
+    color:#067647;
+    border-radius:12px;
+    text-align:center;
+}
+
+.lang{
+position:absolute;
+top:20px;
+right:20px;
+}
+
+.lang button{
+margin:2px;
+padding:5px 10px;
+cursor:pointer;
+}
+
+@media(max-width:700px){
+    .row{
+        grid-template-columns:1fr;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- LANGUAGE BUTTON -->
+<div class="lang">
+<button onclick="changeLang('en')">EN</button>
+<button onclick="changeLang('rw')">RW</button>
+<button onclick="changeLang('fr')">FR</button>
+</div>
+
+<div class="container">
+
+<div class="nav-buttons">
+<a href="index.html" class="back-btn" data-key="back">← Back Home</a>
+<a href="view-appointments.html" class="view-btn" data-key="view">View Appointments</a>
+</div>
+
+<div class="top">
+<h1 data-key="title">Book Appointment</h1>
+<p>XYZ District Hospital System</p>
+</div>
+
+<div class="form-area">
+<form id="form">
+
+<div class="row">
+<div class="group">
+<label data-key="name">Full Name</label>
+<input type="text" id="name" required>
+</div>
+
+<div class="group">
+<label data-key="phone">Phone</label>
+<input type="text" id="phone" required>
+</div>
+</div>
+
+<div class="row">
+<div class="group">
+<label data-key="department">Department</label>
+<select id="department" onchange="loadDoctors()" required>
+<option value="">Select</option>
+<option value="OPD">OPD</option>
+<option value="Maternity">Maternity</option>
+<option value="Pediatrics">Pediatrics</option>
+<option value="Pharmacy">Pharmacy</option>
+<option value="Laboratory">Laboratory</option>
+<option value="Dentist">Dentist</option>
+<option value="Nutrition">Nutrition</option>
+<option value="Emergency">Emergency</option>
+</select>
+</div>
+
+<div class="group">
+<label data-key="doctor">Doctor</label>
+<select id="doctor" required>
+<option value="">Select</option>
+</select>
+</div>
+</div>
+
+<div class="row">
+<div class="group">
+<label data-key="date">Date</label>
+<input type="date" id="date" required>
+</div>
+
+<div class="group">
+<label data-key="time">Time</label>
+<select id="time" required>
+<option value="">Select</option>
+<option>08:00</option>
+<option>09:00</option>
+<option>10:00</option>
+<option>11:00</option>
+<option>14:00</option>
+<option>15:00</option>
+<option>16:00</option>
+</select>
+</div>
+</div>
+
+<div class="group">
+<label data-key="reason">Reason</label>
+<textarea id="reason"></textarea>
+</div>
+
+<button type="submit" data-key="confirm">Confirm Booking</button>
+
+<div class="success" id="success" data-key="success">
+Appointment saved successfully!
+</div>
+
+</form>
+</div>
+
+</div>
+
+<script>
+const doctors = {
+"OPD": ["Dr Jean Mugabo","Dr Claire Uwimana"],
+"Maternity": ["Dr Grace","Dr Emmanuel"],
+"Pediatrics": ["Dr Alice"],
+"Pharmacy": ["Pharm Marie"],
+"Laboratory": ["Lab Eric"],
+"Dentist": ["Dr Solange"],
+"Nutrition": ["Nutr Innocent"],
+"Emergency": ["Dr Olivier"]
+};
+
+function loadDoctors(){
+let dept = document.getElementById("department").value;
+let doctor = document.getElementById("doctor");
+doctor.innerHTML = '<option value="">Select</option>';
+
+if(doctors[dept]){
+doctors[dept].forEach(d=>{
+doctor.innerHTML += `<option>${d}</option>`;
+});
+}
+}
+
+// date
+let today = new Date().toISOString().split("T")[0];
+document.getElementById("date").min = today;
+
+// submit
+document.getElementById("form").addEventListener("submit",function(e){
+e.preventDefault();
+
+let phone = document.getElementById("phone").value;
+if(phone.length < 10){
+alert("Invalid phone");
+return;
+}
+
+let data = JSON.parse(localStorage.getItem("appointments")) || [];
+
+data.push({
+name:name.value,
+phone:phone.value,
+department:department.value,
+doctor:doctor.value,
+date:date.value,
+time:time.value,
+reason:reason.value,
+status:"Pending"
+});
+
+localStorage.setItem("appointments",JSON.stringify(data));
+
+document.getElementById("success").style.display="block";
+this.reset();
+});
+</script>
+
+<!-- LANGUAGE SCRIPT -->
+<script>
+const trans = {
+en:{
+title:"Book Appointment",
+name:"Full Name",
+phone:"Phone",
+department:"Department",
+doctor:"Doctor",
+date:"Date",
+time:"Time",
+reason:"Reason",
+confirm:"Confirm Booking",
+success:"Appointment saved successfully!",
+back:"Back Home",
+view:"View Appointments"
+},
+rw:{
+title:"Fata Gahunda",
+name:"Amazina",
+phone:"Telefone",
+department:"Ishami",
+doctor:"Muganga",
+date:"Itariki",
+time:"Igihe",
+reason:"Impamvu",
+confirm:"Emeza",
+success:"Byakunze!",
+back:"Subira Ahabanza",
+view:"Reba gahunda"
+},
+fr:{
+title:"Rendez-vous",
+name:"Nom complet",
+phone:"Téléphone",
+department:"Département",
+doctor:"Docteur",
+date:"Date",
+time:"Heure",
+reason:"Raison",
+confirm:"Confirmer",
+success:"Enregistré!",
+back:"Retour",
+view:"Voir"
+}
+};
+
+function changeLang(l){
+document.querySelectorAll("[data-key]").forEach(el=>{
+el.textContent = trans[l][el.dataset.key];
+});
+localStorage.setItem("lang",l);
+}
+
+window.onload=()=>{
+changeLang(localStorage.getItem("lang")||"en");
+}
+</script>
+
+</body>
+</html>

@@ -1,0 +1,671 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Patient Records - XYZ Hospital</title>
+  <link rel="stylesheet" href="APPOINTMENTS.CSS">
+  <link rel="stylesheet" href="icon.css">
+  <link rel="stylesheet" href="CHENG.CSS">
+  <link rel="stylesheet" href="SERVIC.CSS">
+
+<link rel="stylesheet" href="PATIENTS RECORDS.CSS">
+<link rel="stylesheet" href="icon.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+<link rel="stylesheet" href="admin-for-header.css">
+<style>
+body{
+font-family:Arial;
+background:#f4f7fb;
+margin:0;
+padding:20px;
+}
+
+/* FORM CONTAINER */
+.container{
+max-width:700px;
+margin:auto;
+background:white;
+padding:25px;
+border-radius:10px;
+box-shadow:0 0 10px rgba(0,0,0,0.1);
+}
+
+h2{
+text-align:center;
+color:#0b3a82;
+margin-bottom:20px;
+}
+
+input,select{
+width:100%;
+padding:12px;
+margin-top:5px;
+margin-bottom:15px;
+border:1px solid #ccc;
+border-radius:5px;
+font-size:16px;
+}
+
+
+/* TABLE */
+table{
+width:100%;
+border-collapse:collapse;
+margin-top:40px;
+background:white;
+}
+
+table th{
+background:#0b3a82;
+color:white;
+padding:12px;
+border:1px solid #ddd;
+}
+
+table td{
+padding:10px;
+border:1px solid #ddd;
+text-align:center;
+}
+
+tr:nth-child(even){
+background:#f2f2f2;
+}
+
+</style>
+</head>
+
+
+<body>
+<header>
+<!-- HEADER -->
+<div class="header">
+
+<a href="adimin.html"> <img src="LOGOO.png" class="logo"></a>
+
+<nav class="Links">
+  <ul class="nav-links">
+    <a href="adimin.html">DASHBOARD</a>
+      <a href="PATIENTS RECORDS.HTML">PATIENTS RECORDS</a>
+        <a href="view-appointments.html">VIEW APPOINTMENTS</a>
+          <a href="pharmacyofadmin.html">PHARMACY</a>
+            <a href="herphtipsofadmin.html">HERPTH TIPS</a>
+  </ul>
+</nav>
+
+<button id="darkModeToggle" class="dark-btn">🌙</button>
+
+<button onclick="logout()" style="padding:12px 25px; background:#d90429; color:white; border:none; border-radius:8px; font-size:16px; font-weight:bold; cursor:pointer;">
+🚪 Logout
+</button>
+
+</div>
+</header>
+
+<!-- TITLE -->
+<h1 data-key="title">Patient Records System</h1>
+
+
+</head>
+
+<body>
+<button onclick="printTable()" 
+style="padding:10px 20px; background:#1e3c72; color:white; border:none; border-radius:6px; cursor:pointer;">
+🖨️ Print Report
+</button>
+<div class="container">
+
+<h2>Patient Registration</h2>
+
+<form id="patientForm">
+
+<input type="text" id="fullName" placeholder="Full Name" required>
+
+<input type="date" id="dob" required>
+
+<select id="gender">
+<option>Male</option>
+<option>Female</option>
+</select>
+
+<input type="text" id="phone" placeholder="Phone">
+
+<select id="sector" onchange="loadCells()">
+<option value="">Sector</option>
+<option value="Burega">Burega</option>
+<option value="Kinzuzi">Kinzuzi</option>
+<option value="Murambi">Murambi</option>
+</select>
+
+<select id="cell" onchange="loadVillages()">
+<option value="">Cell</option>
+</select>
+
+<select id="village">
+<option value="">Village</option>
+</select>
+
+<input type="text" id="condition" placeholder="Condition">
+
+<input type="text" id="doctor" placeholder="Doctor">
+
+<button type="submit">Send to Admin</button>
+
+</form>
+
+</div>
+
+<!-- TABLE -->
+<h2>Registered Patients</h2>
+
+<table id="patientTable">
+
+<thead>
+<tr>
+<th>Full Name</th>
+<th>DOB</th>
+<th>Gender</th>
+<th>Phone</th>
+<th>Sector</th>
+<th>Cell</th>
+<th>Village</th>
+<th>Condition</th>
+<th>Doctor</th>
+<th>Status</th>
+</tr>
+</thead>
+
+<tbody>
+
+</tbody>
+
+</table>
+
+<script>
+
+const data = {
+Burega:{
+Taba:["A","B"],
+Karengeri:["C"]
+},
+
+Kinzuzi:{
+Migendezo:["D"],
+Budakiranya:["E"]
+},
+
+Murambi:{
+Mvuzo:["F"]
+}
+};
+
+const sectorSelect = document.getElementById("sector");
+const cellSelect = document.getElementById("cell");
+const villageSelect = document.getElementById("village");
+
+/* LOAD CELLS */
+function loadCells(){
+
+let s = sectorSelect.value;
+
+cellSelect.innerHTML = "<option value=''>Cell</option>";
+villageSelect.innerHTML = "<option value=''>Village</option>";
+
+for(let c in data[s]){
+cellSelect.innerHTML += `<option>${c}</option>`;
+}
+
+}
+
+/* LOAD VILLAGES */
+function loadVillages(){
+
+let s = sectorSelect.value;
+let c = cellSelect.value;
+
+villageSelect.innerHTML = "<option value=''>Village</option>";
+
+data[s][c].forEach(v=>{
+villageSelect.innerHTML += `<option>${v}</option>`;
+});
+
+}
+
+/* FORM SUBMIT */
+document.getElementById("patientForm").addEventListener("submit",function(e){
+
+e.preventDefault();
+
+let patient = {
+
+fullName:fullName.value,
+dob:dob.value,
+gender:gender.value,
+phone:phone.value,
+sector:sector.value,
+cell:cell.value,
+village:village.value,
+condition:condition.value,
+doctor:doctor.value,
+status:"Pending"
+
+};
+
+let patients = JSON.parse(localStorage.getItem("patients")) || [];
+
+patients.push(patient);
+
+localStorage.setItem("patients",JSON.stringify(patients));
+
+displayPatients();
+
+alert("Sent to Admin!");
+
+this.reset();
+
+});
+
+/* DISPLAY TABLE */
+function displayPatients(){
+
+let patients = JSON.parse(localStorage.getItem("patients")) || [];
+
+let table = document.querySelector("#patientTable tbody");
+
+table.innerHTML = "";
+
+patients.forEach(p=>{
+
+table.innerHTML += `
+
+<tr>
+<td>${p.fullName}</td>
+<td>${p.dob}</td>
+<td>${p.gender}</td>
+<td>${p.phone}</td>
+<td>${p.sector}</td>
+<td>${p.cell}</td>
+<td>${p.village}</td>
+<td>${p.condition}</td>
+<td>${p.doctor}</td>
+<td>${p.status}</td>
+</tr>
+
+`;
+
+});
+
+}
+
+/* PAGE LOAD */
+displayPatients();
+
+</script>
+
+</body>
+</html>
+
+
+
+
+
+
+<!-- FOOTER -->
+<BR><BR>
+    
+<footer class="footer">
+
+  <div class="footer-container">
+
+    <!-- CONTACT -->
+    <div class="footer-box">
+      <h3>Contact Us</h3>
+      <p>Email: info@xyzhospital.rw</p>
+      <p>Phone: +250 788 999 000</p>
+      <p>Emergency: 911 / 912</p>
+      <p>Address: XYZ District Hospital, Rwanda</p>
+    </div>
+
+    
+
+    <!-- QUICK LINKS -->
+    <div class="footer-box">
+      <h3>Quick Links</h3>
+      <a href="login.html">login</a>
+      <a href="index.html">Home</a>
+      <a href="SERVICES.HTML">Services</a>
+   
+      <a href="CONTACT.HTML">Contact</a>
+        <a href="LOGIN.HTML">LOGIN</a>
+       <a href="LOGIN.HTML">LOGIN OF ADMIN</a>
+    </div>
+
+    <!-- SOCIAL MEDIA -->
+    <div class="footer-box">
+      <h3>Follow Us</h3>
+
+      <div class="social-icons">
+        <a href="https://www.facebook.com" target="_blank">
+          <i class="fab fa-facebook-f"></i>
+        </a>
+
+        <a href="https://x.com/YOUR_PAGE" target="_blank">
+          <i class="fab fa-twitter"></i>
+        </a>
+
+        <a href="https://wa.me/250788999000" target="_blank">
+          <i class="fab fa-whatsapp"></i>
+        </a>
+      </div>
+    </div>
+
+    <!-- GOOGLE MAP -->
+    <div class="footer-box">
+      <h3>Our Location</h3>
+
+      <iframe 
+        src="https://www.google.com/maps?q=Rutongo+District+Hospital&output=embed"
+        width="100%" 
+        height="180"
+        style="border:0;"
+        loading="lazy">
+      </iframe>
+
+      <a href="https://maps.google.com/?q=Rutongo+District+Hospital" target="_blank" class="map-btn">
+        Open in Google Maps
+      </a>
+    </div>
+
+  </div>
+
+  <!-- BOTTOM -->
+  <div class="footer-bottom">
+    <p>© 2026 XYZ District Hospital | All rights reserved</p>
+  </div>
+
+</footer>
+</footer>
+
+<script>
+
+/* SUBMIT FORM */
+document.getElementById("patientForm").addEventListener("submit", function(e){
+e.preventDefault();
+
+/* GET VALUES */
+let fullName = document.getElementById("fullName").value;
+let dob = document.getElementById("dob").value;
+let gender = document.getElementById("gender").value;
+let phone = document.getElementById("phone").value;
+let village = document.getElementById("village").value;
+let condition = document.getElementById("condition").value;
+let doctor = document.getElementById("doctor").value;
+
+/* CALCULATE AGE */
+let age = new Date().getFullYear() - new Date(dob).getFullYear();
+
+/* CREATE OBJECT */
+let patient = {
+name: fullName,
+age: age,
+gender: gender,
+phone: phone,
+village: village,
+condition: condition,
+doctor: doctor,
+status: "Admitted"
+};
+
+/* GET OLD DATA */
+let data = JSON.parse(localStorage.getItem("patients")) || [];
+
+/* ADD NEW */
+data.push(patient);
+
+/* SAVE */
+localStorage.setItem("patients", JSON.stringify(data));
+
+alert("Patient added successfully!");
+
+/* RESET */
+this.reset();
+
+/* RELOAD TABLE */
+loadPatients();
+
+});
+
+/* LOAD TABLE */
+function loadPatients(){
+let data = JSON.parse(localStorage.getItem("patients")) || [];
+let rows = "";
+
+data.forEach((p, i)=>{
+rows += `
+<tr>
+<td>${p.name}</td>
+<td>${p.age}</td>
+<td>${p.gender}</td>
+<td>${p.phone}</td>
+<td>${p.village}</td>
+<td>${p.condition}</td>
+<td>${p.doctor}</td>
+<td>${p.status}</td>
+<td>
+<button onclick="deletePatient(${i})">Delete</button>
+</td>
+</tr>
+`;
+});
+
+document.getElementById("patientTable").innerHTML = rows;
+}
+
+/* DELETE */
+function deletePatient(i){
+let data = JSON.parse(localStorage.getItem("patients"));
+data.splice(i,1);
+localStorage.setItem("patients", JSON.stringify(data));
+loadPatients();
+}
+
+/* INITIAL LOAD */
+loadPatients();
+
+</script>
+<!-- PATIENT JS -->
+<script>
+document.getElementById("patientForm").addEventListener("submit", function(e){
+e.preventDefault();
+
+let dob = document.getElementById("dob").value;
+let age = new Date().getFullYear() - new Date(dob).getFullYear();
+
+let data = JSON.parse(localStorage.getItem("patients")) || [];
+
+data.push({
+name:fullName.value,
+age:age,
+gender:gender.value,
+phone:phone.value,
+village:village.value,
+condition:condition.value,
+doctor:doctor.value,
+status:"Active"
+});
+
+localStorage.setItem("patients", JSON.stringify(data));
+loadPatients();
+this.reset();
+});
+
+function loadPatients(){
+let table = document.getElementById("patientTable");
+table.innerHTML="";
+
+let data = JSON.parse(localStorage.getItem("patients")) || [];
+
+data.forEach((p,i)=>{
+table.innerHTML += `
+<tr>
+<td>${p.name}</td>
+<td>${p.age}</td>
+<td>${p.gender}</td>
+<td>${p.phone}</td>
+<td>${p.village}</td>
+<td>${p.condition}</td>
+<td>${p.doctor}</td>
+<td>${p.status}</td>
+<td><button onclick="deletePatient(${i})">Delete</button></td>
+</tr>
+`;
+});
+}
+
+function deletePatient(i){
+let data = JSON.parse(localStorage.getItem("patients"));
+data.splice(i,1);
+localStorage.setItem("patients",JSON.stringify(data));
+loadPatients();
+}
+
+loadPatients();
+</script>
+
+<!-- LANGUAGE SCRIPT -->
+<script>
+
+/* SUBMIT FORM */
+document.getElementById("patientForm").addEventListener("submit", function(e){
+e.preventDefault();
+
+/* GET VALUES */
+let fullName = document.getElementById("fullName").value;
+let dob = document.getElementById("dob").value;
+let gender = document.getElementById("gender").value;
+let phone = document.getElementById("phone").value;
+let village = document.getElementById("village").value;
+let condition = document.getElementById("condition").value;
+let doctor = document.getElementById("doctor").value;
+
+/* CALCULATE AGE */
+let age = new Date().getFullYear() - new Date(dob).getFullYear();
+
+/* CREATE OBJECT */
+let patient = {
+name: fullName,
+age: age,
+gender: gender,
+phone: phone,
+village: village,
+condition: condition,
+doctor: doctor,
+status: "Pending"   // 🔥 admin azabihindura
+};
+
+/* GET OLD DATA */
+let data = JSON.parse(localStorage.getItem("patients")) || [];
+
+/* ADD NEW */
+data.push(patient);
+
+/* SAVE */
+localStorage.setItem("patients", JSON.stringify(data));
+
+alert("Patient submitted! Waiting admin approval.");
+
+/* RESET */
+this.reset();
+
+/* RELOAD */
+loadPatients();
+});
+
+/* LOAD TABLE */
+function loadPatients(){
+let data = JSON.parse(localStorage.getItem("patients")) || [];
+let table = document.getElementById("patientTable");
+
+let rows = "";
+
+data.forEach((p,i)=>{
+rows += `
+<tr>
+<td>${p.name}</td>
+<td>${p.age}</td>
+<td>${p.gender}</td>
+<td>${p.phone}</td>
+<td>${p.village}</td>
+<td>${p.condition}</td>
+<td>${p.doctor}</td>
+<td>${p.status}</td>
+<td>
+<button onclick="deletePatient(${i})">Delete</button>
+</td>
+</tr>
+`;
+});
+
+table.innerHTML = rows;
+}
+
+/* DELETE */
+function deletePatient(i){
+let data = JSON.parse(localStorage.getItem("patients")) || [];
+data.splice(i,1);
+localStorage.setItem("patients", JSON.stringify(data));
+loadPatients();
+}
+
+/* LOAD ON START */
+loadPatients();
+/* function idufash gu printinga*/
+function printTable(){
+
+let printContent = document.getElementById("patientTable").outerHTML;
+
+let newWin = window.open("");
+
+newWin.document.write(`
+<html>
+<head>
+<title>Print Patients</title>
+<style>
+table{
+width:100%;
+border-collapse:collapse;
+}
+th,td{
+border:1px solid black;
+padding:8px;
+text-align:center;
+}
+th{
+background:#1e3c72;
+color:white;
+}
+</style>
+</head>
+<body>
+
+<h2 style="text-align:center;">Patients Report</h2>
+
+${printContent}
+
+<script>
+window.print();
+<\/script>
+
+</body>
+</html>
+`);
+
+newWin.document.close();
+}
+</script>
+</script>
+
+<script src="icon.js"></script>
+
+</body>
+</html>

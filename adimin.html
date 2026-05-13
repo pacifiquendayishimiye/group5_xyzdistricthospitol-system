@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Admin Dashboard</title>
+<link rel="stylesheet" href="admin-for-header.css">
+<style>
+body{
+margin:0;
+font-family:Arial;
+background:#f4f7fb;
+}
+
+</style>
+</head>
+
+<body>
+
+
+
+
+
+
+<script>
+
+
+function logout(){
+
+localStorage.removeItem("role");
+
+window.location.href="adimin";
+
+}
+
+
+let password = prompt("Enter Admin Password");
+
+if(password !== "1234"){
+
+alert("Wrong Password");
+
+window.location.href = "index.html";
+
+}
+
+function logout(){
+
+window.location.href = "index.html";
+
+}
+
+
+</script>
+
+
+
+
+
+<header>
+<!-- HEADER -->
+<div class="header">
+<a href="adimin.html"> <img src="LOGOO.png" class="logo"></a>
+
+<nav class="Links">
+  <ul class="nav-links">
+    <a href="adimin.html">Dashboard</a>
+      <a href="PATIENTS RECORDS.HTML">PATIENTS RECORDS</a>
+        <a href="view-appointments.html">view appointment</a>
+          <a href="pharmacyofadmin.html">pharmacy</a>
+            <a href="herphtipsofadmin.html">healthTips</a>
+             <a href="emergencyofadmin.html">emergencyofadmin</a>
+  </ul>
+</nav>
+
+<button id="darkModeToggle" class="dark-btn">🌙</button>
+
+
+<button onclick="logout()" style="padding:12px 25px; background:#d90429; color:white; border:none; border-radius:8px; font-size:16px; font-weight:bold; cursor:pointer;">
+🚪 Logout
+</button>
+</div>
+</header>
+
+
+<link rel="stylesheet" href="admin-home.css">
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body>
+
+<div class="dashboard">
+
+  <!-- 🔐 ADMIN INFO PANEL -->
+  <div class="admin-info">
+    <h2>👨‍💼 Admin Panel</h2>
+    <p><b>Name:</b> Admin</p>
+    <p><b>Role:</b> Super Admin</p>
+    <button class="logout">Logout</button>
+  </div>
+
+  <!-- 📊 QUICK STATS -->
+  <div class="cards">
+
+    <div class="card">
+      <h3>👨‍⚕️ Patients</h3>
+      <p>120</p>
+    </div>
+
+    <div class="card">
+      <h3>📅 Appointments</h3>
+      <p>18</p>
+    </div>
+
+    <div class="card">
+      <h3>💊 Pharmacy</h3>
+      <p>55</p>
+    </div>
+
+    <div class="card">
+      <h3>🧾 Health Tips</h3>
+      <p>12</p>
+    </div>
+
+    <div class="card">
+      <h3>👩‍⚕️ Doctors</h3>
+      <p>6</p>
+    </div>
+
+  </div>
+
+  <!-- ⚡ QUICK ACTIONS -->
+  <div class="section">
+    <h2>⚡ Quick Actions</h2>
+
+    <div class="actions">
+      <a href="#">➕ Add Patient</a>
+      <a href="#">📅 View Appointments</a>
+      <a href="pharmacyofstocks.html">💊 Pharmacy stock</a>
+      <a href="#">📝 Add Health Tips</a>
+      <a href="#">📊 View Reports</a>
+    </div>
+  </div>
+
+  <!-- 📌 RECENT ACTIVITY -->
+  <div class="section">
+    <h2>📌 Recent Activity</h2>
+
+    <ul class="activity">
+      <li>👤 Patient John added</li>
+      <li>📅 New appointment booked</li>
+      <li>📝 Health tip published</li>
+      <li>💊 Pharmacy stock updated</li>
+    </ul>
+  </div>
+
+  <!-- 📊 CHARTS -->
+  <div class="section">
+    <h2>📊 Patients Per Day</h2>
+    <canvas id="patientsChart"></canvas>
+  </div>
+
+</div>
+
+<script>
+const ctx = document.getElementById('patientsChart');
+
+new Chart(ctx, {
+  type: 'bar',
+  data: {
+    labels: ['Mon','Tue','Wed','Thu','Fri','Sat','Sun'],
+    datasets: [{
+      label: 'Patients',
+      data: [10, 20, 15, 25, 18, 30, 22],
+      backgroundColor: '#0b3a82'
+    }]
+  },
+  options: {
+    responsive: true,
+    scales: {
+      y: { beginAtZero: true }
+    }
+  }
+});
+</script>
+
+</body>
+</html>
+
+-- FOOTER -->
+<BR><BR>
+    
+<footer class="footer">
+
+  <div class="footer-container">
+
+    <!-- CONTACT -->
+    <div class="footer-box">
+      <h3>Contact Us</h3>
+      <p>Email: info@xyzhospital.rw</p>
+      <p>Phone: +250 788 999 000</p>
+      <p>Emergency: 911 / 912</p>
+      <p>Address: XYZ District Hospital, Rwanda</p>
+    </div>
+
+    
+
+    <!-- QUICK LINKS -->
+    <div class="footer-box">
+      <h3>Quick Links</h3>
+      <a href="login.html">login</a>
+      <a href="index.html">Home</a>
+      <a href="SERVICES.HTML">Services</a>
+   
+      <a href="CONTACT.HTML">Contact</a>
+        <a href="LOGIN.HTML">LOGIN</a>
+       <a href="LOGIN.HTML">LOGIN OF ADMIN</a>
+    </div>
+
+    <!-- SOCIAL MEDIA -->
+    <div class="footer-box">
+      <h3>Follow Us</h3>
+
+      <div class="social-icons">
+        <a href="https://www.facebook.com" target="_blank">
+          <i class="fab fa-facebook-f"></i>
+        </a>
+
+        <a href="https://x.com/YOUR_PAGE" target="_blank">
+          <i class="fab fa-twitter"></i>
+        </a>
+
+        <a href="https://wa.me/250788999000" target="_blank">
+          <i class="fab fa-whatsapp"></i>
+        </a>
+      </div>
+    </div>
+
+    <!-- GOOGLE MAP -->
+    <div class="footer-box">
+      <h3>Our Location</h3>
+
+      <iframe 
+        src="https://www.google.com/maps?q=Rutongo+District+Hospital&output=embed"
+        width="100%" 
+        height="180"
+        style="border:0;"
+        loading="lazy">
+      </iframe>
+
+      <a href="https://maps.google.com/?q=Rutongo+District+Hospital" target="_blank" class="map-btn">
+        Open in Google Maps
+      </a>
+    </div>
+
+  </div>
+
+  <!-- BOTTOM -->
+  <div class="footer-bottom">
+    <p>© 2026 XYZ District Hospital | All rights reserved</p>
+  </div>
+
+</footer>
+</footer>
+
+
+
+
+<script src="drakmodyomuriadmin.js"></script>
+</body>
+</html>

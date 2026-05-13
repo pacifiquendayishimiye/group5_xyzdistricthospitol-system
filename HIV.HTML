@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HIV Information - XYZ Hospital</title>
+
+<link rel="stylesheet" href="HIV.CSS">
+<link rel="stylesheet" href="icon.css">
+
+
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<header class="navbar">
+
+  <div class="logo-section">
+    <img src="LOGOO.jfif" class="logo">
+    <h3 data-key="title">XYZ District<BR> Hospital</h3>
+  </div>
+
+  <nav class="nav-links">
+    <a href="index.html" data-key="home">HOME</a>
+    <a href="SERVICE.HTML" data-key="services">SERVICES</a>
+
+    
+    <a href="PHARMACY.HTML" data-key="pharmacy">PHARMACY</a>
+    <a href="HEALTH TIPS.HTML" data-key="tips">HEALTH TIPS</a>
+    <a href="CONTACT.HTML" data-key="contact">CONTACT</a>
+    <a href="LOGIN.HTML" data-key="login">LOGIN</a>
+
+    <!-- LANGUAGE -->
+    <div class="dropdown">
+      <button class="dropbtn" id="langBtn">English ▾</button>
+      <div class="dropdown-content">
+        <a href="#" onclick="changeLang('en')">English</a>
+        <a href="#" onclick="changeLang('rw')">Kinyarwanda</a>
+        <a href="#" onclick="changeLang('fr')">French</a>
+      </div>
+    </div>
+
+  </nav>
+
+  <button id="darkModeToggle">🌙</button>
+
+</header>
+
+<!-- SECTION -->
+<section class="hiv-section">
+
+  <h2 data-key="hiv_title">HIV/AIDS Information</h2>
+
+  <div class="hiv-card">
+    <h3 data-key="what_hiv">What is HIV?</h3>
+    <p data-key="what_hiv_desc">HIV attacks the immune system and weakens the body.</p>
+  </div>
+
+  <div class="hiv-card">
+    <h3 data-key="what_aids">What is AIDS?</h3>
+    <p data-key="what_aids_desc">AIDS is the advanced stage of HIV infection.</p>
+  </div>
+
+  <div class="hiv-card">
+    <h3 data-key="transmission">How HIV is transmitted</h3>
+    <p data-key="transmission_desc">Through unprotected sex, blood, and mother to child.</p>
+  </div>
+
+  <div class="hiv-card">
+    <h3 data-key="prevention">Prevention</h3>
+    <p data-key="prevention_desc">Use condoms, avoid sharing sharp objects, test regularly.</p>
+  </div>
+
+</section>
+
+<a href="index.html" class="back-btn" data-key="back">⬅ Back to Home</a>
+
+<br><br><br>
+
+<!-- FOOTER -->
+
+<footer class="footer">
+
+  <div class="footer-container">
+
+    <!-- CONTACT -->
+    <div class="footer-box">
+      <h3>Contact Us</h3>
+      <p>Email: info@xyzhospital.rw</p>
+      <p>Phone: +250 788 999 000</p>
+      <p>Emergency: 911 / 912</p>
+      <p>Address: XYZ District Hospital, Rwanda</p>
+    </div>
+
+    
+
+    <!-- QUICK LINKS -->
+    <div class="footer-box">
+      <h3>Quick Links</h3>
+      <a href="login.html">login</a>
+      <a href="index.html">Home</a>
+      <a href="SERVICES.HTML">Services</a>
+      <a href="APPOINTMENTS.HTML">Appointments</a>
+      <a href="CONTACT.HTML">Contact</a>
+    </div>
+
+    <!-- SOCIAL MEDIA -->
+    <div class="footer-box">
+      <h3>Follow Us</h3>
+
+      <div class="social-icons">
+        <a href="https://www.facebook.com" target="_blank">
+          <i class="fab fa-facebook-f"></i>
+        </a>
+
+        <a href="https://x.com/YOUR_PAGE" target="_blank">
+          <i class="fab fa-twitter"></i>
+        </a>
+
+        <a href="https://wa.me/250788999000" target="_blank">
+          <i class="fab fa-whatsapp"></i>
+        </a>
+      </div>
+    </div>
+
+    <!-- GOOGLE MAP -->
+    <div class="footer-box">
+      <h3>Our Location</h3>
+
+      <iframe 
+        src="https://www.google.com/maps?q=Rutongo+District+Hospital&output=embed"
+        width="100%" 
+        height="180"
+        style="border:0;"
+        loading="lazy">
+      </iframe>
+
+      <a href="https://maps.google.com/?q=Rutongo+District+Hospital" target="_blank" class="map-btn">
+        Open in Google Maps
+      </a>
+    </div>
+
+  </div>
+
+  <!-- BOTTOM -->
+  <div class="footer-bottom">
+    <p>© 2026 XYZ District Hospital | All rights reserved</p>
+  </div>
+
+</footer>
+
+<script src="icon.js"></script>
+
+<!-- ✅ LANGUAGE SCRIPT -->
+<script>
+const translations = {
+  en: {
+    title:"XYZ District Hospital",
+    home:"HOME",
+    services:"SERVICES",
+    appointments:"APPOINTMENTS",
+    records:"PATIENTS RECORDS",
+    pharmacy:"PHARMACY",
+    tips:"HEALTH TIPS",
+    contact:"CONTACT",
+    login:"LOGIN",
+    hiv_title:"HIV/AIDS Information",
+    what_hiv:"What is HIV?",
+    what_hiv_desc:"HIV attacks the immune system and weakens the body.",
+    what_aids:"What is AIDS?",
+    what_aids_desc:"AIDS is the advanced stage of HIV infection.",
+    transmission:"How HIV is transmitted",
+    transmission_desc:"Through unprotected sex, blood, and mother to child.",
+    prevention:"Prevention",
+    prevention_desc:"Use condoms, avoid sharing sharp objects, test regularly.",
+    back:"⬅ Back to Home",
+    contact_us:"Contact Us",
+    quick_links:"Quick Links",
+    location:"Our Location",
+    address:"Address: XYZ District Hospital, Rwanda"
+  },
+
+  rw: {
+    title:"Ibitaro bya XYZ",
+    home:"AHABANZA",
+    services:"SERIVISI",
+    appointments:"GUFATA RENDEZ-VOUS",
+    records:"INYANDIKO Z'ABARWAYI",
+    pharmacy:"FARUMASI",
+    tips:"INAMA Z'UBUZIMA",
+    contact:"TWANDIKIRE",
+    login:"INJIRA",
+    hiv_title:"Amakuru ya VIH/SIDA",
+    what_hiv:"VIH ni iki?",
+    what_hiv_desc:"VIH yangiza ubwirinzi bw'umubiri.",
+    what_aids:"SIDA ni iki?",
+    what_aids_desc:"Ni icyiciro cya nyuma cya VIH.",
+    transmission:"Uburyo VIH yandura",
+    transmission_desc:"Imibonano idakingiye, amaraso, no ku mubyeyi ujya ku mwana.",
+    prevention:"Kwirinda",
+    prevention_desc:"Koresha agakingirizo, ntusangire ibikoresho, jya wipimisha.",
+    back:"⬅ Subira Ahabanza",
+    contact_us:"Twandikire",
+    quick_links:"Amahuza",
+    location:"Aho duherereye",
+    address:"Aderesi: Ibitaro bya XYZ, Rwanda"
+  },
+
+  fr: {
+    title:"Hôpital XYZ",
+    home:"ACCUEIL",
+    services:"SERVICES",
+    appointments:"RENDEZ-VOUS",
+    records:"DOSSIERS PATIENTS",
+    pharmacy:"PHARMACIE",
+    tips:"CONSEILS SANTÉ",
+    contact:"CONTACT",
+    login:"CONNEXION",
+    hiv_title:"Informations VIH/SIDA",
+    what_hiv:"Qu'est-ce que le VIH ?",
+    what_hiv_desc:"Le VIH affaiblit le système immunitaire.",
+    what_aids:"Qu'est-ce que le SIDA ?",
+    what_aids_desc:"C'est le stade avancé du VIH.",
+    transmission:"Transmission",
+    transmission_desc:"Relations non protégées, sang, mère à enfant.",
+    prevention:"Prévention",
+    prevention_desc:"Utiliser des préservatifs, se tester régulièrement.",
+    back:"⬅ Retour",
+    contact_us:"Contactez-nous",
+    quick_links:"Liens rapides",
+    location:"Notre position",
+    address:"Adresse: Hôpital XYZ, Rwanda"
+  }
+};
+
+function changeLang(lang){
+  document.querySelectorAll("[data-key]").forEach(el=>{
+    let key = el.getAttribute("data-key");
+    el.textContent = translations[lang][key];
+  });
+
+  document.getElementById("langBtn").innerText =
+    lang === "en" ? "English ▾" :
+    lang === "rw" ? "Kinyarwanda ▾" :
+    "French ▾";
+
+  localStorage.setItem("lang", lang);
+}
+
+window.onload = function(){
+  let lang = localStorage.getItem("lang") || "en";
+  changeLang(lang);
+};
+</script>
+
+</body>
+</html>

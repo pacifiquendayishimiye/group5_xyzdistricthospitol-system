@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Director Office - XYZ Hospital</title>
+
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="icon.css">
+  <link rel="stylesheet" href="pages.css">
+</head>
+
+<body>
+
+<!-- ===== NAVBAR ===== -->
+<header class="navbar">
+  <div class="logo-section">
+    <img src="LOGOO.jfif" class="logo">
+    <h3 data-key="title">XYZ District Hospital</h3>
+  </div>
+
+  <nav class="nav-links">
+    <a href="index.html" class="active" data-key="home">HOME</a>
+    <a href="SERVICE.HTML" data-key="services">SERVICES</a>
+  
+    
+    <a href="PHARMACY.HTML" data-key="pharmacy">PHARMACY</a>
+    <a href="HEALTH TIPS.HTML" data-key="tips">HEALTH TIPS</a>
+    <a href="CONTACT.HTML" data-key="contact">CONTACT</a>
+    
+
+    <!-- LANGUAGE -->
+    <div class="dropdown">
+      <button class="dropbtn" id="langBtn">English ▾</button>
+      <div class="dropdown-content">
+        <a href="javascript:void(0)" onclick="changeLang('en')">English</a>
+        <a href="javascript:void(0)" onclick="changeLang('rw')">Kinyarwanda</a>
+        <a href="javascript:void(0)" onclick="changeLang('fr')">French</a>
+      </div>
+    </div>
+  </nav>
+
+  <button id="darkModeToggle">🌙</button>
+</header>
+
+<!-- ===== CONTENT ===== -->
+<h1 data-key="directorTitle">Director General Office</h1>
+
+<p data-key="directorText">
+The Director General oversees all hospital operations including clinical and administrative services.
+</p>
+
+<a href="index.html" class="back-btn" data-key="back">⬅ Back to Home</a>
+
+<br><br>
+
+<!-- ===== FOOTER ===== -->
+<footer class="footer">
+
+  <div class="footer-container">
+
+    <div class="footer-box">
+      <h3 data-key="contactUs">Contact Us</h3>
+      <p>Email: info@xyzhospital.rw</p>
+      <p data-key="phone">Phone: +250 788 999 000</p>
+      <p data-key="emergency">Emergency: 911 / 912</p>
+      <p data-key="address">Address: XYZ District Hospital, Rwanda</p>
+    </div>
+
+    <div class="footer-box">
+      <h3 data-key="quick">Quick Links</h3>
+      <a href="index.html" data-key="home">Home</a>
+      <a href="SERVICES.HTML" data-key="services">Services</a>
+      <a href="APPOINTMENTS.HTML" data-key="appointments">Appointments</a>
+      <a href="CONTACT.HTML" data-key="contact">Contact</a>
+     <a href="LOGIN.HTML">LOGIN</a>
+       <a href="LOGIN.HTML">LOGIN OF ADMIN</a>
+    </div>
+
+    <div class="footer-box">
+      <h3 data-key="follow">Follow Us</h3>
+      <div class="social-icons">
+        <a href="#"><i class="fab fa-facebook-f"></i></a>
+        <a href="#"><i class="fab fa-twitter"></i></a>
+        <a href="#"><i class="fab fa-whatsapp"></i></a>
+      </div>
+    </div>
+
+    <div class="footer-box">
+      <h3 data-key="location">Our Location</h3>
+      <iframe src="https://www.google.com/maps?q=Rutongo+District+Hospital&output=embed"
+        width="100%" height="180" style="border:0;"></iframe>
+
+      <a href="#" class="map-btn" data-key="openMap">Open in Google Maps</a>
+    </div>
+
+  </div>
+<script src="icon.js"></script>
+  <div class="footer-bottom">
+    <p data-key="copy">© 2026 XYZ District Hospital</p>
+  </div>
+
+</footer>
+
+<!-- ===== LANGUAGE SCRIPT ===== -->
+<script>
+const translations = {
+
+en:{
+title:"XYZ District Hospital",
+home:"HOME",
+services:"SERVICES",
+appointments:"APPOINTMENTS",
+records:"PATIENTS RECORDS",
+pharmacy:"PHARMACY",
+tips:"HEALTH TIPS",
+contact:"CONTACT",
+login:"LOGIN",
+directorTitle:"Director General Office",
+directorText:"The Director General oversees all hospital operations including clinical and administrative services.",
+back:"⬅ Back to Home",
+contactUs:"Contact Us",
+phone:"Phone: +250 788 999 000",
+emergency:"Emergency: 911 / 912",
+address:"Address: XYZ District Hospital, Rwanda",
+quick:"Quick Links",
+follow:"Follow Us",
+location:"Our Location",
+openMap:"Open in Google Maps",
+copy:"© 2026 XYZ District Hospital"
+},
+
+rw:{
+title:"Ibitaro bya XYZ",
+home:"AHABANZA",
+services:"SERIVISI",
+appointments:"GUSABA SERIVISI",
+records:"AMADOSIYE",
+pharmacy:"FARUMASI",
+tips:"INAMA Z'UBUZIMA",
+contact:"TUVUGANE",
+login:"INJIRA",
+directorTitle:"Ibiro by’Umuyobozi Mukuru",
+directorText:"Umuyobozi mukuru ayobora ibikorwa byose by’ibitaro harimo serivisi z’ubuvuzi n’ubuyobozi.",
+back:"⬅ Subira Ahabanza",
+contactUs:"Tuvugishe",
+phone:"Telefone: +250 788 999 000",
+emergency:"Ubutabazi bwihuse",
+address:"Aderesi: Ibitaro bya XYZ",
+quick:"Amahuza",
+follow:"Dukurikire",
+location:"Aho duherereye",
+openMap:"Fungura kuri Map",
+copy:"© 2026 Ibitaro bya XYZ"
+},
+
+fr:{
+title:"Hôpital XYZ",
+home:"ACCUEIL",
+services:"SERVICES",
+appointments:"RENDEZ-VOUS",
+records:"DOSSIERS",
+pharmacy:"PHARMACIE",
+tips:"CONSEILS",
+contact:"CONTACT",
+login:"CONNEXION",
+directorTitle:"Bureau du Directeur Général",
+directorText:"Le directeur supervise toutes les opérations de l’hôpital.",
+back:"⬅ Retour",
+contactUs:"Contactez-nous",
+phone:"Téléphone",
+emergency:"Urgence",
+address:"Adresse",
+quick:"Liens rapides",
+follow:"Suivez-nous",
+location:"Localisation",
+openMap:"Ouvrir sur Map",
+copy:"© 2026 Hôpital XYZ"
+}
+};
+
+function changeLang(lang){
+document.querySelectorAll("[data-key]").forEach(el=>{
+const key=el.getAttribute("data-key");
+if(translations[lang][key]){
+el.textContent=translations[lang][key];
+}
+});
+document.getElementById("langBtn").textContent=lang.toUpperCase()+" ▾";
+localStorage.setItem("lang",lang);
+}
+
+window.onload=function(){
+changeLang(localStorage.getItem("lang")||"en");
+}
+</script>
+
+</body>
+</html>

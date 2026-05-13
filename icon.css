@@ -1,0 +1,200 @@
+/* ================= RESET ================= */
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #eaebf8;
+  color: #000;
+  transition: 0.3s;
+}
+/* ================= DARK MODE ================= */
+body.dark {
+  background: #121212;
+  color: #ffffff;
+  transition: 0.3s;
+}
+
+/* TEXT FIX (IMPORTANT) */
+body.dark h1,
+body.dark h2,
+body.dark h3,
+body.dark h4,
+body.dark p,
+body.dark span,
+body.dark a,
+body.dark label {
+  color: #ffffff;
+}
+
+/* ================= TOGGLE BUTTON ================= */
+#darkModeToggle {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+
+  padding: 10px;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+
+  background: rgba(0,0,0,0.7);
+  color: white;
+  font-size: 20px;
+
+  z-index: 1000;
+  transition: 0.3s;
+}
+
+#darkModeToggle:hover {
+  transform: scale(1.1);
+}
+
+/* ================= NAVBAR ================= */
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 15px 40px;
+  background: #ffffff;
+  border-bottom: 1px solid #ddd;
+}
+
+body.dark .navbar {
+  background: #1e1e1e;
+  border-bottom: 1px solid #333;
+}
+
+/* LOGO */
+.logo-section {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.logo {
+  height: 50px;
+}
+
+.logo-section h2 {
+  font-size: 22px;
+  font-weight: bold;
+}
+
+/* ================= NAV LINKS ================= */
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: #666;
+  font-size: 14px;
+  font-weight: 600;
+  transition: 0.3s;
+}
+
+/* LIGHT MODE */
+.nav-links a.active,
+.nav-links a:hover {
+  color: #0077b6;
+}
+
+/* DARK MODE LINKS */
+body.dark .nav-links a {
+  color: #ccc;
+}
+
+body.dark .nav-links a.active,
+body.dark .nav-links a:hover {
+  color: #00b4d8;
+}
+
+/* ================= CARDS / SECTIONS ================= */
+.card,
+.contact-info,
+#contactForm {
+  background: #ffffff;
+}
+
+body.dark .card,
+body.dark .contact-info,
+body.dark #contactForm {
+  background: #1e1e1e;
+  color: white;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+}
+
+/* ================= INPUTS ================= */
+.user-box input,
+#contactForm input,
+#contactForm textarea {
+  color: #000;
+  border: 1px solid #ccc;
+  background: white;
+}
+
+body.dark .user-box input,
+body.dark #contactForm input,
+body.dark #contactForm textarea {
+  background: #2a2a2a;
+  color: white;
+  border: 1px solid #555;
+}
+
+/* ================= BUTTONS ================= */
+button {
+  transition: 0.3s;
+}
+
+body.dark button {
+  background: #2e8b57;
+  color: white;
+}
+
+/* ================= FOOTER ================= */
+.footer {
+  background: #0b1d2a;
+  color: white;
+}
+
+body.dark .footer {
+  background: #000;
+}
+
+/* ================= LINKS FIX ================= */
+body.dark a {
+  color: #ddd;
+}
+
+body.dark a:hover {
+  color: #00b4d8;
+}
+
+/* ================= FOOTER ================= */
+.footer {
+  background: #0b1d2a;
+  color: white;
+}
+
+body.dark .footer {
+  background: #000;
+  color: #ccc;
+}
+
+/* ================= DROPDOWN ================= */
+.dropdown-content {
+  background: white;
+}
+
+body.dark .dropdown-content {
+  background: #1e1e1e;
+}
+
+.dropdown-content a {
+  color: #333;
+}
+
+body.dark .dropdown-content a {
+  color: #ccc;
+}

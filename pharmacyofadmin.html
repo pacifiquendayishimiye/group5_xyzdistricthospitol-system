@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Admin Dashboard</title>
+<link rel="stylesheet" href="admin-for-header.css">
+<style>
+body{
+margin:0;
+font-family:Arial;
+background:#f4f7fb;
+}
+
+</style>
+</head>
+
+<body>
+
+
+
+
+
+
+<script>
+
+
+function logout(){
+
+localStorage.removeItem("role");
+
+window.location.href="adimin";
+
+}
+
+
+let password = prompt("Enter Admin Password");
+
+if(password !== "1234"){
+
+alert("Wrong Password");
+
+window.location.href = "index.html";
+
+}
+
+function logout(){
+
+window.location.href = "index.html";
+
+}
+
+
+</script>
+
+
+
+
+
+<header>
+<!-- HEADER -->
+<div class="header">
+<a href="adimin.html"> <img src="LOGOO.png" class="logo"></a>
+
+<nav class="Links">
+  <ul class="nav-links">
+    <a href="adimin.html">Dashboard</a>
+      <a href="PATIENTS RECORDS.HTML">PATIENTS RECORDS</a>
+        <a href="view-appointments.html">view appointment</a>
+          <a href="pharmacyofadmin.html">pharmacy</a>
+            <a href="herphtipsofadmin.html">healthTips</a>
+             <a href="emergencyofadmin.html">emergencyofadmin</a>
+  </ul>
+</nav>
+
+<button id="darkModeToggle" class="dark-btn">🌙</button>
+
+
+<button onclick="logout()" style="padding:12px 25px; background:#d90429; color:white; border:none; border-radius:8px; font-size:16px; font-weight:bold; cursor:pointer;">
+🚪 Logout
+</button>
+</div>
+</header>
+
+
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial;
+}
+
+body{
+background:#f4f7fb;
+}
+
+/* HEADER */
+.header{
+background:#0b3a82;
+padding:15px;
+color:white;
+text-align:center;
+font-size:17px;
+font-weight:bold;
+}
+
+/* CONTAINER */
+.container{
+max-width:1200px;
+margin:auto;
+padding:20px;
+}
+
+h1{
+text-align:center;
+color:#0b3a82;
+margin:20px 0;
+}
+
+/* FORM */
+form{
+background:white;
+padding:20px;
+border-radius:12px;
+box-shadow:0 4px 10px rgba(0,0,0,0.1);
+}
+
+input, textarea{
+width:100%;
+padding:12px;
+margin:10px 0;
+border-radius:8px;
+border:1px solid #ccc;
+}
+
+/* BUTTON */
+button{
+padding:12px;
+background:#0b3a82;
+color:white;
+border:none;
+border-radius:8px;
+cursor:pointer;
+}
+
+button:hover{
+background:#072c61;
+}
+
+/* TABLE */
+table{
+width:100%;
+border-collapse:collapse;
+margin-top:30px;
+background:white;
+}
+
+th, td{
+padding:12px;
+border:1px solid #ddd;
+text-align:center;
+}
+
+th{
+background:#0b3a82;
+color:white;
+}
+
+table img{
+width:70px;
+height:70px;
+object-fit:cover;
+border-radius:8px;
+}
+
+/* DELETE */
+.delete{
+background:red;
+padding:8px;
+border:none;
+color:white;
+border-radius:6px;
+cursor:pointer;
+}
+
+.delete:hover{
+background:darkred;
+}
+
+/* EDIT */
+.edit{
+background:green;
+padding:8px;
+border:none;
+color:white;
+border-radius:6px;
+cursor:pointer;
+margin-left:5px;
+}
+
+</style>
+</head>
+
+<body>
+
+
+<div class="header">
+💊 Pharmacy Admin System
+</div>
+
+<div class="container">
+
+<h1>Add Medicine</h1>
+
+<form id="pharmacyForm">
+
+<input type="text" id="drugName" placeholder="Medicine Name" required>
+<input type="number" id="stock" placeholder="Stock Quantity" required>
+<input type="number" id="price" placeholder="Price (RWF)" required>
+<input type="date" id="expiry" required>
+<textarea id="description" placeholder="Description"></textarea>
+<input type="file" id="imageInput" accept="image/*" required>
+
+<button type="submit">➕ Add Medicine</button>
+
+</form>
+
+<h2 style="text-align:center;margin-top:30px;">
+📦 Medicines Table
+</h2>
+
+<table>
+<thead>
+<tr>
+<th>Image</th>
+<th>Name</th>
+<th>Stock</th>
+<th>Price</th>
+<th>Expiry</th>
+<th>Action</th>
+</tr>
+</thead>
+
+<tbody id="tableBody"></tbody>
+
+</table>
+
+</div>
+
+<script>
+
+/* LOAD */
+function loadMeds(){
+
+let meds = JSON.parse(localStorage.getItem("medicines")) || [];
+
+let output = "";
+
+meds.forEach((m,i)=>{
+
+output += `
+<tr>
+
+<td><img src="${m.image}"></td>
+
+<td>${m.name}</td>
+
+<td>${m.stock}</td>
+
+<td>${m.price} RWF</td>
+
+<td>${m.expiry}</td>
+
+<td>
+
+<button class="delete" onclick="deleteMed(${i})">🗑 Delete</button>
+
+<button class="edit" onclick="editMed(${i})">✏ Edit</button>
+
+</td>
+
+</tr>
+`;
+
+});
+
+document.getElementById("tableBody").innerHTML = output;
+
+}
+
+/* ADD */
+document.getElementById("pharmacyForm")
+.addEventListener("submit", function(e){
+
+e.preventDefault();
+
+let file = imageInput.files[0];
+
+let reader = new FileReader();
+
+reader.onload = function(){
+
+let meds = JSON.parse(localStorage.getItem("medicines")) || [];
+
+meds.push({
+name: drugName.value,
+stock: stock.value,
+price: price.value,
+expiry: expiry.value,
+description: description.value,
+image: reader.result
+});
+
+localStorage.setItem("medicines", JSON.stringify(meds));
+
+loadMeds();
+
+pharmacyForm.reset();
+
+alert("Medicine Added!");
+
+};
+
+reader.readAsDataURL(file);
+
+});
+
+/* DELETE */
+function deleteMed(i){
+
+let meds = JSON.parse(localStorage.getItem("medicines")) || [];
+
+if(confirm("Delete this medicine?")){
+
+meds.splice(i,1);
+
+localStorage.setItem("medicines", JSON.stringify(meds));
+
+loadMeds();
+
+}
+
+}
+
+/* EDIT */
+function editMed(i){
+
+let meds = JSON.parse(localStorage.getItem("medicines")) || [];
+
+let m = meds[i];
+
+drugName.value = m.name;
+stock.value = m.stock;
+price.value = m.price;
+expiry.value = m.expiry;
+description.value = m.description;
+
+/* remove old */
+meds.splice(i,1);
+
+localStorage.setItem("medicines", JSON.stringify(meds));
+
+loadMeds();
+
+alert("Edit data then click Add again!");
+
+}
+
+/* START */
+loadMeds();
+
+</script>
+   
+<footer class="footer">
+
+  <div class="footer-container">
+
+    <!-- CONTACT -->
+    <div class="footer-box">
+      <h3>Contact Us</h3>
+      <p>Email: info@xyzhospital.rw</p>
+      <p>Phone: +250 788 999 000</p>
+      <p>Emergency: 911 / 912</p>
+      <p>Address: XYZ District Hospital, Rwanda</p>
+    </div>
+
+    
+
+    <!-- QUICK LINKS -->
+    <div class="footer-box">
+      <h3>Quick Links</h3>
+      <a href="login.html">login</a>
+      <a href="index.html">Home</a>
+      <a href="SERVICES.HTML">Services</a>
+   
+      <a href="CONTACT.HTML">Contact</a>
+        <a href="LOGIN.HTML">LOGIN</a>
+       <a href="LOGIN.HTML">LOGIN OF ADMIN</a>
+    </div>
+
+    <!-- SOCIAL MEDIA -->
+    <div class="footer-box">
+      <h3>Follow Us</h3>
+
+      <div class="social-icons">
+        <a href="https://www.facebook.com" target="_blank">
+          <i class="fab fa-facebook-f"></i>
+        </a>
+
+        <a href="https://x.com/YOUR_PAGE" target="_blank">
+          <i class="fab fa-twitter"></i>
+        </a>
+
+        <a href="https://wa.me/250788999000" target="_blank">
+          <i class="fab fa-whatsapp"></i>
+        </a>
+      </div>
+    </div>
+
+    <!-- GOOGLE MAP -->
+    <div class="footer-box">
+      <h3>Our Location</h3>
+
+      <iframe 
+        src="https://www.google.com/maps?q=Rutongo+District+Hospital&output=embed"
+        width="100%" 
+        height="180"
+        style="border:0;"
+        loading="lazy">
+      </iframe>
+
+      <a href="https://maps.google.com/?q=Rutongo+District+Hospital" target="_blank" class="map-btn">
+        Open in Google Maps
+      </a>
+    </div>
+
+  </div>
+
+  <!-- BOTTOM -->
+  <div class="footer-bottom">
+    <p>© 2026 XYZ District Hospital | All rights reserved</p>
+  </div>
+
+</footer>
+</footer>
+
+
+
+
+<script src="drakmodyomuriadmin.js"></script>
+</body>
+</html>
+</body>
+</html>

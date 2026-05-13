@@ -1,0 +1,293 @@
+/* ================= RESET ================= */
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: #eaebf8;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* ================= NAVBAR ================= */
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 15px 40px;
+  background-color: #ffffff;
+  border-bottom: 1px solid #ddd;
+}
+
+/* LOGO */
+.logo-section {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.logo {
+  height: 50px;
+}
+
+.logo-section h2 {
+  font-size: 22px;
+  font-weight: bold;
+  white-space: nowrap;
+}
+
+/* NAV LINKS */
+.nav-links {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 30px;
+  flex: 1;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: #666;
+  font-size: 14px;
+  font-weight: 600;
+  transition: 0.3s;
+}
+
+.nav-links a.active,
+.nav-links a:hover {
+  color: #0077b6;
+}
+
+
+/* SHOW DROPDOWN */
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+.hiv-section {
+  padding: 30px;
+}
+
+.hiv-section h2 {
+  text-align: center;
+  color: #e11656;
+}
+
+.hiv-card {
+  background: lch(92.78% 4.21 140.41);
+  margin: 15px auto;
+  padding: 20px;
+  border-left: 5px solid rgb(70, 30, 179);
+  border-radius: 8px;
+  max-width: 700px;
+  box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+}
+
+.hiv-card h3 {
+  color: #5207e8;
+}
+/* BACK BUTTON (UPDATED) */
+.back-btn {
+  display: inline-block;
+  margin-top: 25px;
+  padding: 12px 22px;
+  background: linear-gradient(135deg, #0077b6, #00b4d8);
+  color: white;
+  text-decoration: none;
+  border-radius: 30px;
+  font-weight: bold;
+  letter-spacing: 0.5px;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+
+/* HOVER EFFECT */
+.back-btn:hover {
+  transform: translateY(-3px) scale(1.05);
+  background: linear-gradient(135deg, #023e8a, #0077b6);
+  box-shadow: 0 6px 18px rgba(0,0,0,0.3);
+}
+
+/* CLICK EFFECT */
+.back-btn:active {
+  transform: scale(0.95);
+}
+/* ================= FOOTER ================= */
+.footer {
+  background: #0b1d2a;
+  color: white;
+  padding: 40px 20px 10px;
+}
+
+.footer-container {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 30px;
+}
+
+.footer-box {
+  flex: 1;
+  min-width: 220px;
+}
+
+.footer-box h3 {
+  margin-bottom: 15px;
+}
+
+/* TEXT */
+.footer-box p {
+  margin: 5px 0;
+  color: #ccc;
+}
+
+/* LINKS */
+.footer-box a {
+  display: block;
+  color: #ccc;
+  text-decoration: none;
+  margin: 5px 0;
+  transition: 0.3s;
+}
+
+.footer-box a:hover {
+  color: #1f8bb5;
+}
+
+/* SOCIAL */
+.social-icons {
+  display: flex;
+  gap: 12px;
+  margin-top: 10px;
+}
+
+.social-icons a {
+  background: #1f8bb5;
+  color: white;
+  padding: 10px;
+  border-radius: 50%;
+  font-size: 16px;
+}
+
+.social-icons a:hover {
+  background: #16779a;
+}
+
+/* MAP */
+.footer-box iframe {
+  border-radius: 8px;
+  margin-bottom: 10px;
+}
+
+/* MAP BUTTON */
+.map-btn {
+  display: inline-block;
+  background: #1f8bb5;
+  color: white !important;
+  padding: 8px 15px;
+  border-radius: 5px;
+  font-size: 14px;
+}
+
+.map-btn:hover {
+  background: #16779a;
+}
+
+/* BOTTOM */
+.footer-bottom {
+  text-align: center;
+  border-top: 1px solid #333;
+  margin-top: 20px;
+  padding-top: 10px;
+  font-size: 14px;
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .footer-container {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .social-icons {
+    justify-content: center;
+  }
+}/* ================= MOBILE FULL FIX ================= */
+@media (max-width: 768px){
+
+  /* NAVBAR */
+  .navbar{
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 10px 15px;
+  }
+
+  .nav-links{
+    flex-direction: column;
+    width: 100%;
+    gap: 0;
+  }
+
+  .nav-links a{
+    width: 100%;
+    padding: 10px;
+    border-top: 1px solid #eee;
+  }
+
+  /* LOGO TEXT */
+  .logo-section h2{
+    font-size: 16px;
+  }
+
+  /* FORM */
+  #patientForm{
+    flex-direction: column;
+  }
+
+  #patientForm input,
+  #patientForm select,
+  #patientForm button{
+    width: 100%;
+  }
+
+  /* TABLE → SCROLL (IMPORTANT) */
+  table{
+    display: block;
+    overflow-x: auto;
+    white-space: nowrap;
+  }
+
+  /* FOOTER */
+  .footer-container{
+    flex-direction: column;
+    text-align: center;
+  }
+
+}
+
+
+/* EXTRA SMALL SCREENS (phones nto cyane) */
+@media (max-width: 480px){
+
+  .logo{
+    height: 40px;
+  }
+
+  .logo-section h2{
+    font-size: 14px;
+  }
+
+  .nav-links a{
+    font-size: 13px;
+  }
+
+  #patientForm input,
+  #patientForm select{
+    padding: 10px;
+  }
+
+  .footer-box{
+    min-width: 100%;
+  }
+
+}

@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hospital Navbar</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="icon.css">
+</head>
+
+<body>
+
+<header class="navbar">
+  <div class="logo-section">
+     <a href="index.html"> <img src="LOGOO.png" class="logo"></a>
+    <h3>XYZ District<BR> Hospital</h3>
+  </div>
+
+  <nav class="nav-links">
+    
+    <a href="index.html">HOME</a>
+    <a href="SERVICE.HTML">SERVICES</a>
+    <a href="loginofuser.html">APPOINTMENTS</a>
+
+    <a href="PHARMACY.HTML">PHARMACY</a>
+    <a href="HEALTH TIPS.HTML">HEALTH TIPS</a>
+    <a href="CONTACT.HTML">CONTACT</a>
+    
+    <div class="dropdown">
+      <div class="dropdown">
+      <button class="dropbtn" id="langBtn">English ▾</button>
+      <div class="dropdown-content">
+        <a href="#" onclick="setLanguage('en')">English</a>
+        <a href="#" onclick="setLanguage('rw')">Kinyarwanda</a>
+        <a href="#" onclick="setLanguage('fr')">French</a>
+      </div>
+    </div>
+  </nav>
+    </div>
+  </nav>
+  <button id="darkModeToggle">🌙</button>
+</header>
+
+<!-- ✅ HERO SLIDER -->
+<section class="hero">
+  <div class="slider">
+    <img src="image1.jpg" alt="">
+    <img src="image2.jpg" alt="">
+    <img src="rutongo.jpg" alt="">
+  </div>
+
+  <div class="hero-text">
+    <h4>Welcome to</h4>
+    <h1>XYZ District Hospital </h1>
+  </div>
+</section>
+<script>
+  const images = document.querySelectorAll(".slider img");
+  let index = 0;
+
+  function showImage() {
+    images.forEach(img => img.classList.remove("active"));
+
+    images[index].classList.add("active");
+
+    index++;
+    if (index >= images.length) {
+      index = 0;
+    }
+  }
+
+  showImage(); // tangira
+  setInterval(showImage, 5000); // buri segonda 5
+</script>
+ <script src="icon.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+<section class="info-section">
+
+  <a href="emergency.html" class="info-box">
+    <i class="fa-solid fa-phone icon"></i>
+    <div>
+      <h3>EMERGENCY</h3>
+      <span>For emergency call:<br>911 / 912</span>
+    </div>
+  </a>
+
+  <a href="APPOINTMENTS.HTML" class="info-box">
+    <i class="fa-solid fa-calendar-days icon"></i>
+    <div>
+      <h3>APPOINTMENT</h3>
+      <span>Request for an appointment</span>
+    </div>
+  </a>
+
+  <a href="#" class="info-box">
+    <i class="fa-solid fa-user-doctor icon"></i>
+    <div>
+      <h3>PATIENTS</h3>
+      <span>Patients & user guide</span>
+    </div>
+  </a>
+
+  <a href="HIV.HTML" class="info-box">
+    <i class="fa-solid fa-virus icon"></i>
+    <div>
+      <h3>HIV/AIDS</h3>
+      <span>More about HIV/AIDS</span>
+    </div>
+  </a>
+
+</section>
+
+<section class="mission-vision">
+
+  <div class="mv-box">
+    <h2>Our Mission</h2>
+    <p>
+      To provide high-quality, affordable, and accessible healthcare services 
+      to the community using modern technology and compassionate care.
+    </p>
+  </div>
+
+  <div class="mv-box">
+    <h2>Our Vision</h2>
+    <p>
+      To become a leading district hospital in Rwanda known for excellent 
+      patient care, innovation, and community health improvement.
+    </p>
+  </div>
+  
+
+</section>
+
+<section class="quick-section">
+
+  <h2>QUICK ACCESS</h2>
+  <p class="subtitle">Quick access to Rutongo District Hospital Units and services</p>
+
+  <div class="cards">
+
+    <div class="card">
+      <div class="icon">🏷️</div>
+      <h3>Director of Administration and Finance</h3>
+      <p>
+        Participate in assessment of staffing needs based on the requirements
+        for improving the quality of care in accordance with the national health policy...
+      </p>
+      <a href="ADIMIN (2).HTML">Read more →</a>
+    </div>
+
+    <div class="card">
+      <div class="icon">🏷️</div>
+      <h3>Director General Office</h3>
+      <p>
+        The office of director general is responsible of overseeing the hospital clinical
+        and administrative activities. Participates in development of...
+      </p>
+      <a href="DIRECTOR.HTML">Read more →</a>
+    </div>
+
+    <div class="card">
+      <div class="icon">🏷️</div>
+      <h3>Medical and Allied Health sciences services</h3>
+      <p>
+        The unit of Medical and Allied Health sciences services is responsible of conducting
+        health assessments including clinical and paraclinical...
+      </p>
+      <a href="MEDICAL.HTML">Read more →</a>
+    </div>
+
+  </div>
+<!-- ABOUT -->
+<div class="section about">
+    <div class="card big-card">
+        <h2>About Us</h2>
+        <p>XYZ District Hospital is located in Rwanda and serves over 50,000 people.</p>
+        <p><strong>Established:</strong> 2005</p>
+        <p><strong>Bed Capacity:</strong> 200 beds</p>
+    </div>
+</div>
+
+<!-- DEPARTMENTS -->
+<div class="section grid">
+    <h2>Our Departments</h2>
+
+    <div class="card">Outpatient Department (OPD)</div>
+    <div class="card">Maternity and Neonatal Care</div>
+    <div class="card">Pediatrics</div>
+    <div class="card">Pharmacy</div>
+    <div class="card">Laboratory and Diagnostic Services</div>
+    <div class="card">Dental Services</div>
+    <div class="card">Nutrition and Dietetics</div>
+    <div class="card">HIV/AIDS and TB Clinic</div>
+    <div class="card">Emergency and Trauma Unit</div>
+</div>
+
+<!-- FEATURED SERVICES -->
+<div class="section grid">
+    <h2>Featured Services</h2>
+
+    <div class="card">OPD - General Consultation</div>
+    <div class="card">Maternity Care</div>
+    <div class="card">Laboratory Services</div>
+    <div class="card">Emergency Services</div>
+</div>
+
+<!-- PARTNERS -->
+<div class="section about">
+    <div class="card">
+        <h2>Our Partners</h2>
+        <p>RBC, Ministry of Health, Partners in Health</p>
+    </div>
+</div>
+
+</section>
+<div class="btn-container">
+  <a href="#" class="explore-btn">Explore More</a>
+</div>
+<section class="news-section">
+
+  <h2>Latest News</h2>
+
+  <div class="news-container">
+
+    <div class="news-card">
+      <img src="abaganga.jpg" alt="">
+      <h3>5000 BARWAYE ISHAZA RYO MU JISHO BAGIYE KUVURWA</h3>
+      <span class="date">Thursday, 16 May, 2024</span>
+      <p>
+        Abarwayi 50 ba mbere bageze ku bitaro bya XYZ  District Hospital kwivuza indwara y'ishaza 
+      </p>
+      
+    </div>
+
+    <div class="news-card">
+      <img src="inda.png" alt="">
+      <h3>RULINDO: INGENDO ZIVUYEHO KU BABYEYI BATWITE</h3>
+      <span class="date">Wednesday, 07 February, 2024</span>
+      <p>
+        Ababyeyi bo mu karere ka Rulindo bishimira ko begerejwe servisi za Echographie
+      </p>
+      
+    </div>
+
+    <div class="news-card">
+      <img src="umwana.jpg" alt="">
+      <h3>RULINDO: MINISITERI Y'UBUZIMA IRASHIMA ABATURAGE UBURYO BAKOMEJEKWIRINDA IRWARA </h3>
+      <span class="date">Friday, 24 March, 2023</span>
+      <p>
+        Mu karere ka Rulindo, abajyanama b'ubuzima bagize uruhare runini mu guhashya HIV 
+      </p>
+
+    </div>
+
+  </div><br><br><br>
+
+<div class="video-container">
+  <video controls>
+    <source src="VIDEO.mp4" type="video/mp4">
+  </video>
+</div>
+<section class="partners">
+
+  <div class="partners-container">
+
+    <div class="slide">
+      <a href="https://imbuto.rw" target="_blank">
+        <img src="imbuto.png">
+      </a>
+    </div>
+
+    <div class="slide">
+      <a href="https://www.rbc.gov.rw" target="_blank">
+        <img src="rbc.jfif">
+      </a>
+    </div>
+
+    <div class="slide">
+      <a href="https://onesight.essilorluxottica.com" target="_blank">
+        <img src="onesignth.jpg">
+      </a>
+    </div>
+
+    <div class="slide">
+      <a href="https://www.unicef.org" target="_blank">
+        <img src="unicef.png">
+      </a>
+    </div>
+
+  </div>
+
+
+  <!-- HOSPITAL INFO -->
+<section class="hospital-info">
+
+  <h2>XYZ District Hospital - Rwanda</h2>
+
+  <p class="motto"> <object class="classList">
+    <strong>Official Motto:</strong> "Ubuzima Bwiza ni Umutungo – Good health is wealth"</object>
+  </p>
+
+  <p class="welcome">
+    Welcome to XYZ District Hospital. We provide quality healthcare close to the community.
+  </p>
+
+  <!-- STATISTICS -->
+  <div class="stats">
+
+    <div class="stat-box">
+      <h3>200+</h3>
+      <p>Bed Capacity</p>
+    </div>
+
+    <div class="stat-box">
+      <h3>35+</h3>
+      <p>Specialized Doctors</p>
+    </div>
+
+    <div class="stat-box">
+      <h3>15+</h3>
+      <p>Nurses</p>
+    </div>
+
+    <div class="stat-box">
+      <h3>10,000+</h3>
+      <p>Patients per Year</p>
+    </div>
+
+    <div class="stat-box">
+      <h3>24/7</h3>
+      <p>Emergency Services</p>
+    </div>
+
+  </div>
+
+</section>
+
+<!-- DIRECTOR MESSAGE -->
+<section class="director-message">
+
+  <h2>Message from the Director</h2>
+
+  <p>
+    Welcome to XYZ District Hospital. Our mission is to provide quality healthcare 
+    services to all citizens. We are committed to improving community health 
+    through professionalism and care.
+  </p>
+
+  <p class="director-name">— Dr. Marie Uwimana</p>
+
+</section>
+
+<!-- OPENING HOURS -->
+<section class="opening-hours">
+
+  <h2>Opening Hours</h2>
+
+  <ul>
+    <li>Monday - Friday: 7:00 AM – 9:00 PM</li>
+    <li>Saturday: 8:00 AM – 5:00 PM</li>
+    <li>Sunday & Public Holidays: Emergency Only</li>
+  </ul>
+
+</section>
+
+</section>
+<footer class="footer">
+
+  <div class="footer-container">
+
+    <!-- CONTACT -->
+    <div class="footer-box">
+      <h3>Contact Us</h3>
+      <p>Email: info@xyzhospital.rw</p>
+      <p>Phone: +250 788 999 000</p>
+      <p>Emergency: 911 / 912</p>
+      <p>Address: XYZ District Hospital, Rwanda</p>
+    </div>
+
+    
+
+    <!-- QUICK LINKS -->
+    <div class="footer-box">
+      <h3>Quick Links</h3>
+      <a href="login.html">login</a>
+      <a href="index.html">Home</a>
+      <a href="SERVICES.HTML">Services</a>
+      <a href="APPOINTMENTS.HTML">Appointments</a>
+      <a href="CONTACT.HTML">Contact</a>
+      <a href="adimin.html">LOGIN OF ADMIN</a>
+    </div>
+
+    <!-- SOCIAL MEDIA -->
+    <div class="footer-box">
+      <h3>Follow Us</h3>
+
+      <div class="social-icons">
+        <a href="https://www.facebook.com" target="_blank">
+          <i class="fab fa-facebook-f"></i>
+        </a>
+
+        <a href="https://x.com/YOUR_PAGE" target="_blank">
+          <i class="fab fa-twitter"></i>
+        </a>
+
+        <a href="https://wa.me/250788999000" target="_blank">
+          <i class="fab fa-whatsapp"></i>
+        </a>
+      </div>
+    </div>
+
+    <!-- GOOGLE MAP -->
+    <div class="footer-box">
+      <h3>Our Location</h3>
+
+      <iframe 
+        src="https://www.google.com/maps?q=Rutongo+District+Hospital&output=embed"
+        width="100%" 
+        height="180"
+        style="border:0;"
+        loading="lazy">
+      </iframe>
+
+      <a href="https://maps.google.com/?q=Rutongo+District+Hospital" target="_blank" class="map-btn">
+        Open in Google Maps
+      </a>
+    </div>
+
+  </div>
+
+  <!-- BOTTOM -->
+  <div class="footer-bottom">
+    <p>© 2026 XYZ District Hospital | All rights reserved</p>
+  </div>
+
+</footer>
+
+<!-- ✅ LANGUAGE SCRIPT -->
+<script>
+const translations = {
+  en: {
+    home:"HOME",
+    services:"SERVICES",
+    appointments:"APPOINTMENTS",
+    patients:"PATIENTS RECORDS",
+    pharmacy:"PHARMACY",
+    health:"HEALTH TIPS",
+    contact:"CONTACT",
+    login:"LOGIN",
+    welcome:"Welcome to",
+    hospital:"XYZ District Hospital",
+    emergency:"EMERGENCY",
+    call:"For emergency call:",
+    appointment:"APPOINTMENT",
+    request:"Request for an appointment",
+    mission:"Our Mission",
+    missionText:"To provide high-quality, affordable, and accessible healthcare services.",
+    vision:"Our Vision",
+    visionText:"To become a leading district hospital in Rwanda."
+  },
+
+  rw: {
+    home:"AHABANZA",
+    services:"SERIVISI",
+    appointments:"GUFATA RENDEZ-VOUS",
+    patients:"ABARWAYI",
+    pharmacy:"PHARMACIE",
+    health:"INAMA Z'UBUZIMA",
+    contact:"TUVUGISHE",
+    login:"KWINJIRA",
+    welcome:"Murakaza neza",
+    hospital:"Ibitaro bya XYZ",
+    emergency:"UBUTABAZI",
+    call:"Hamagara:",
+    appointment:"RENDEZ-VOUS",
+    request:"Saba rendez-vous",
+    mission:"Intego yacu",
+    missionText:"Gutanga serivisi nziza z'ubuvuzi.",
+    vision:"Icyerekezo cyacu",
+    visionText:"Kuba ibitaro byiza mu Rwanda."
+  },
+
+  fr: {
+    home:"ACCUEIL",
+    services:"SERVICES",
+    appointments:"RENDEZ-VOUS",
+    patients:"PATIENTS",
+    pharmacy:"PHARMACIE",
+    health:"CONSEILS SANTÉ",
+    contact:"CONTACT",
+    login:"CONNEXION",
+    welcome:"Bienvenue à",
+    hospital:"Hôpital XYZ",
+    emergency:"URGENCE",
+    call:"Appelez:",
+    appointment:"RENDEZ-VOUS",
+    request:"Demander un rendez-vous",
+    mission:"Notre mission",
+    missionText:"Fournir des soins de qualité.",
+    vision:"Notre vision",
+    visionText:"Être un hôpital leader au Rwanda."
+  }
+};
+
+function setLanguage(lang){
+  document.getElementById("langBtn").innerText =
+    (lang==="en"?"English":lang==="rw"?"Kinyarwanda":"French") + " ▾";
+
+  document.querySelectorAll("[data-lang]").forEach(el=>{
+    let key = el.getAttribute("data-lang");
+    el.innerHTML = translations[lang][key] || el.innerHTML;
+  });
+} 

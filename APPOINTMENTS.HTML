@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Appointments - XYZ Hospital</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+<link rel="stylesheet" href="APPOINTMENTS.CSS">
+<link rel="stylesheet" href="icon.css">
+</head>
+
+<body>
+
+<!-- ===== NAVBAR ===== -->
+<header class="navbar">
+
+  <div class="logo-section">
+   <a href="index.html"> <img src="LOGOO.png" class="logo"></a>
+    <h3 data-key="title">XYZ District<br> Hospital</h3>
+  </div>
+
+  <nav class="nav-links">
+
+    <a href="index.html" data-key="home">HOME</a>
+    <a href="SERVICE.HTML" data-key="services">SERVICES</a>
+   
+
+    <a href="PHARMACY.HTML" data-key="pharmacy">PHARMACY</a>
+    <a href="HEALTH TIPS.HTML" >HEALTHTIPS</a>
+    <a href="CONTACT.HTML" data-key="contact">CONTACT</a>
+   
+
+    <!-- LANGUAGE
+     
+    -->
+    <div class="dropdown">
+      <button class="dropbtn" id="langBtn">English ▾</button>
+
+      <div class="dropdown-content">
+        <a href="javascript:void(0)" onclick="changeLang('en')">English</a>
+        <a href="javascript:void(0)" onclick="changeLang('rw')">Kinyarwanda</a>
+        <a href="javascript:void(0)" onclick="changeLang('fr')">French</a>
+      </div>
+    </div>
+ <button id="darkModeToggle" class="dark-btn">🌙</button>
+  </nav>
+
+</header>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Book Appointment</title>
+
+<style>
+body{
+font-family:Arial;
+background:#f4f6f9;
+padding:20px;
+}
+
+form{
+max-width:500px;
+margin:auto;
+background:white;
+padding:20px;
+border-radius:10px;
+box-shadow:0 0 10px rgba(0,0,0,0.1);
+}
+
+input, select, textarea{
+width:100%;
+padding:10px;
+margin:10px 0;
+border-radius:5px;
+border:1px solid #ccc;
+}
+
+button{
+width:100%;
+padding:12px;
+background:#2e8b57;
+color:white;
+border:none;
+border-radius:5px;
+cursor:pointer;
+}
+</style>
+
+</head>
+
+<body>
+
+<h2 style="text-align:center;">Book Appointment</h2>
+
+<form id="appointmentForm">
+
+<input type="text" id="name" placeholder="Full Name" required>
+<input type="text" id="mutuelle" placeholder="Mutuelle">
+<input type="tel" id="phone" placeholder="Phone" required>
+
+<select id="department" onchange="setDoctor()" required>
+<option value="">Select Department</option>
+<option>OPD</option>
+<option>Maternity</option>
+<option>Pediatrics</option>
+<option>Pharmacy</option>
+<option>Laboratory</option>
+<option>Dental</option>
+<option>Emergency</option>
+</select>
+
+<!-- AUTO DOCTOR -->
+<select id="doctor" required>
+<option value="">Select Doctor</option>
+</select>
+
+<input type="date" id="date" required>
+<input type="time" id="time" required>
+
+<textarea id="reason" placeholder="Reason"></textarea>
+
+<button type="submit">Book Appointment</button>
+
+</form>
+
+<script>
+
+// 👨‍⚕️ DOCTORS BY DEPARTMENT
+let doctors = {
+"OPD": ["Dr John", "Dr Alice"],
+"Maternity": ["Dr Sarah", "Dr Grace"],
+"Pediatrics": ["Dr Peter", "Dr James"],
+"Pharmacy": ["Dr Kevin"],
+"Laboratory": ["Dr Brian"],
+"Dental": ["Dr Emma"],
+"Emergency": ["Dr Paul"]
+};
+
+// CHANGE DOCTOR LIST
+function setDoctor(){
+
+let dept = document.getElementById("department").value;
+let doctorSelect = document.getElementById("doctor");
+
+doctorSelect.innerHTML = "<option value=''>Select Doctor</option>";
+
+if(doctors[dept]){
+
+doctors[dept].forEach(doc=>{
+let option = document.createElement("option");
+option.value = doc;
+option.textContent = doc;
+doctorSelect.appendChild(option);
+});
+
+}
+
+}
+
+// SAVE APPOINTMENT
+document.getElementById("appointmentForm").addEventListener("submit", function(e){
+e.preventDefault();
+
+let appointment = {
+name: document.getElementById("name").value,
+mutuelle: document.getElementById("mutuelle").value,
+phone: document.getElementById("phone").value,
+department: document.getElementById("department").value,
+doctor: document.getElementById("doctor").value,
+date: document.getElementById("date").value,
+time: document.getElementById("time").value,
+status: "Pending"
+};
+
+let data = JSON.parse(localStorage.getItem("appointments")) || [];
+
+data.push(appointment);
+
+localStorage.setItem("appointments", JSON.stringify(data));
+
+alert("Appointment Booked!");
+
+document.getElementById("appointmentForm").reset();
+
+document.getElementById("doctor").innerHTML = "<option value=''>Select Doctor</option>";
+
+});
+
+</script>
+<footer class="footer">
+
+  <div class="footer-container">
+
+    <!-- CONTACT -->
+    <div class="footer-box">
+      <h3>Contact Us</h3>
+      <p>Email: info@xyzhospital.rw</p>
+      <p>Phone: +250 788 999 000</p>
+      <p>Emergency: 911 / 912</p>
+      <p>Address: XYZ District Hospital, Rwanda</p>
+    </div>
+
+    
+
+    <!-- QUICK LINKS -->
+    <div class="footer-box">
+      <h3>Quick Links</h3>
+      <a href="login.html">login</a>
+      <a href="index.html">Home</a>
+      <a href="SERVICES.HTML">Services</a>
+      <a href="APPOINTMENTS.HTML">Appointments</a>
+      <a href="CONTACT.HTML">Contact</a>
+      <a href="adimin.html">LOGIN OF LOGIN</a>
+    </div>
+
+    <!-- SOCIAL MEDIA -->
+    <div class="footer-box">
+      <h3>Follow Us</h3>
+
+      <div class="social-icons">
+        <a href="https://www.facebook.com" target="_blank">
+          <i class="fab fa-facebook-f"></i>
+        </a>
+
+        <a href="https://x.com/YOUR_PAGE" target="_blank">
+          <i class="fab fa-twitter"></i>
+        </a>
+
+        <a href="https://wa.me/250788999000" target="_blank">
+          <i class="fab fa-whatsapp"></i>
+        </a>
+      </div>
+    </div>
+
+    <!-- GOOGLE MAP -->
+    <div class="footer-box">
+      <h3>Our Location</h3>
+
+      <iframe 
+        src="https://www.google.com/maps?q=Rutongo+District+Hospital&output=embed"
+        width="100%" 
+        height="180"
+        style="border:0;"
+        loading="lazy">
+      </iframe>
+
+      <a href="https://maps.google.com/?q=Rutongo+District+Hospital" target="_blank" class="map-btn">
+        Open in Google Maps
+      </a>
+    </div>
+
+  </div>
+
+  <!-- BOTTOM -->
+  <div class="footer-bottom">
+    <p>© 2026 XYZ District Hospital | All rights reserved</p>
+  </div>
+
+</footer>
+</body>
+</html>

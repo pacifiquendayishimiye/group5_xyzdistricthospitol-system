@@ -1,0 +1,116 @@
+/* ===== DROPDOWN ===== */
+.dropdown {
+  position: relative;
+}
+
+.dropbtn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+/* MENU */
+.dropdown-content {
+  display: none;
+  position: absolute;
+  right: 0;
+  background: white;
+  min-width: 150px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+/* LINKS */
+.dropdown-content a {
+  display: block;
+  padding: 10px;
+  text-decoration: none;
+  color: #333;
+}
+
+.dropdown-content a:hover {
+  background: #f1f1f1;
+}
+
+/* SHOW */
+.dropdown:hover .dropdown-content {
+  display: block;
+}/* ================= MOBILE FULL FIX ================= */
+@media (max-width: 768px){
+
+  /* NAVBAR */
+  .navbar{
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 10px 15px;
+  }
+
+  .nav-links{
+    flex-direction: column;
+    width: 100%;
+    gap: 0;
+  }
+
+  .nav-links a{
+    width: 100%;
+    padding: 10px;
+    border-top: 1px solid #eee;
+  }
+
+  /* LOGO TEXT */
+  .logo-section h2{
+    font-size: 16px;
+  }
+
+  /* FORM */
+  #patientForm{
+    flex-direction: column;
+  }
+
+  #patientForm input,
+  #patientForm select,
+  #patientForm button{
+    width: 100%;
+  }
+
+  /* TABLE → SCROLL (IMPORTANT) */
+  table{
+    display: block;
+    overflow-x: auto;
+    white-space: nowrap;
+  }
+
+  /* FOOTER */
+  .footer-container{
+    flex-direction: column;
+    text-align: center;
+  }
+
+}
+
+
+/* EXTRA SMALL SCREENS (phones nto cyane) */
+@media (max-width: 480px){
+
+  .logo{
+    height: 40px;
+  }
+
+  .logo-section h2{
+    font-size: 14px;
+  }
+
+  .nav-links a{
+    font-size: 13px;
+  }
+
+  #patientForm input,
+  #patientForm select{
+    padding: 10px;
+  }
+
+  .footer-box{
+    min-width: 100%;
+  }
+
+}

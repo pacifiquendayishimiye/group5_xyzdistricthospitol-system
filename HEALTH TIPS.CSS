@@ -1,0 +1,424 @@
+/* ================= RESET ================= */
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: #eaebf8;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* ================= NAVBAR ================= */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 40px;
+  background-color: #ffffff;
+  border-bottom: 1px solid #ddd;
+}
+
+.logo-section {
+  display: flex;
+  align-items: center;
+}
+
+.logo {
+  height: 50px;
+  margin-right: 10px;
+}
+
+.logo-section h2 {
+  font-size: 22px;
+  font-weight: bold;
+}
+
+/* NAV LINKS */
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 25px;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: #666;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.nav-links a.active,
+.nav-links a:hover {
+  color: #0077b6;
+}
+
+/* DROPDOWN */
+.dropdown {
+  position: relative;
+}
+
+.dropbtn {
+  background: none;
+  border: none;
+  font-size: 14px;
+  color: #666;
+  cursor: pointer;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  right: 0;
+  background-color: #fff;
+  min-width: 120px;
+  box-shadow: 0px 4px 8px rgba(0,0,0,0.1);
+}
+
+.dropdown-content a {
+  display: block;
+  padding: 10px;
+  text-decoration: none;
+  color: #333;
+}
+
+.dropdown-content a:hover {
+  background-color: #f1f1f1;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+/* ================= IMAGE GALLERY ================= */
+.image-gallery {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* 3 ku murongo */
+  gap: 20px;
+  padding: 30px;
+}
+
+/* buri card */
+.image-card {
+  background: white;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  text-align: center;
+  transition: 0.3s;
+}
+
+.image-card:hover {
+  transform: translateY(-5px);
+}
+
+/* image */
+.image-card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+/* caption */
+.caption {
+  padding: 12px;
+  font-weight: bold;
+  color: #333;
+}
+
+/* TITLE hagati */
+.gallery-title {
+  grid-column: 1 / -1;
+  text-align: center;
+  font-size: 24px;
+  font-weight: bold;
+  color: #0a3d62;
+  margin-bottom: 10px;
+}
+
+/* ================= HEALTH TIPS ================= */
+.title {
+  text-align: center;
+  margin: 20px;
+  color: #0a3d62;
+}
+
+/* GRID */
+.tips-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+  padding: 20px;
+}
+
+/* CARD */
+.tip-card {
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  overflow: hidden;
+  transition: 0.3s;
+}
+
+.tip-card:hover {
+  transform: translateY(-5px);
+}
+
+/* IMAGE */
+.tip-card img {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+}
+
+/* CONTENT */
+.tip-content {
+  padding: 15px;
+}
+
+.tip-content h4 {
+  margin-bottom: 10px;
+  color: #007bff;
+}
+
+.tip-content p {
+  font-size: 14px;
+  color: #555;
+}
+
+/* LIKE BUTTON */
+.like-btn {
+  margin-top: 10px;
+  padding: 6px 12px;
+  border: none;
+  background: #28a745;
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.like-btn:hover {
+  background: #218838;
+}
+
+/* FORM */
+form {
+  padding: 20px;
+}
+
+form input, form textarea {
+  width: 100%;
+  padding: 10px;
+  margin: 8px 0;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+form button {
+  background: #007bff;
+  color: white;
+  padding: 10px;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+form button:hover {
+  background: #0056b3;
+}
+
+/* ================= RESPONSIVE ================= */
+@media (max-width: 900px) {
+  .image-gallery {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .image-gallery {
+    grid-template-columns: 1fr;
+  }
+
+  .nav-links {
+    justify-content: center;
+  }
+}/* ================= FOOTER ================= */
+.footer {
+  background: #0b1d2a;
+  color: white;
+  padding: 40px 20px 10px;
+}
+
+.footer-container {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 30px;
+}
+
+.footer-box {
+  flex: 1;
+  min-width: 220px;
+}
+
+.footer-box h3 {
+  margin-bottom: 15px;
+}
+
+/* TEXT */
+.footer-box p {
+  margin: 5px 0;
+  color: #ccc;
+}
+
+/* LINKS */
+.footer-box a {
+  display: block;
+  color: #ccc;
+  text-decoration: none;
+  margin: 5px 0;
+  transition: 0.3s;
+}
+
+.footer-box a:hover {
+  color: #1f8bb5;
+}
+
+/* SOCIAL */
+.social-icons {
+  display: flex;
+  gap: 12px;
+  margin-top: 10px;
+}
+
+.social-icons a {
+  background: #1f8bb5;
+  color: white;
+  padding: 10px;
+  border-radius: 50%;
+  font-size: 16px;
+}
+
+.social-icons a:hover {
+  background: #16779a;
+}
+
+/* MAP */
+.footer-box iframe {
+  border-radius: 8px;
+  margin-bottom: 10px;
+}
+
+/* MAP BUTTON */
+.map-btn {
+  display: inline-block;
+  background: #1f8bb5;
+  color: white !important;
+  padding: 8px 15px;
+  border-radius: 5px;
+  font-size: 14px;
+}
+
+.map-btn:hover {
+  background: #16779a;
+}
+
+/* BOTTOM */
+.footer-bottom {
+  text-align: center;
+  border-top: 1px solid #333;
+  margin-top: 20px;
+  padding-top: 10px;
+  font-size: 14px;
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .footer-container {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .social-icons {
+    justify-content: center;
+  }
+}/* ================= MOBILE FULL FIX ================= */
+@media (max-width: 768px){
+
+  /* NAVBAR */
+  .navbar{
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 10px 15px;
+  }
+
+  .nav-links{
+    flex-direction: column;
+    width: 100%;
+    gap: 0;
+  }
+
+  .nav-links a{
+    width: 100%;
+    padding: 10px;
+    border-top: 1px solid #eee;
+  }
+
+  /* LOGO TEXT */
+  .logo-section h2{
+    font-size: 16px;
+  }
+
+  /* FORM */
+  #patientForm{
+    flex-direction: column;
+  }
+
+  #patientForm input,
+  #patientForm select,
+  #patientForm button{
+    width: 100%;
+  }
+
+  /* TABLE → SCROLL (IMPORTANT) */
+  table{
+    display: block;
+    overflow-x: auto;
+    white-space: nowrap;
+  }
+
+  /* FOOTER */
+  .footer-container{
+    flex-direction: column;
+    text-align: center;
+  }
+
+}
+
+
+/* EXTRA SMALL SCREENS (phones nto cyane) */
+@media (max-width: 480px){
+
+  .logo{
+    height: 40px;
+  }
+
+  .logo-section h2{
+    font-size: 14px;
+  }
+
+  .nav-links a{
+    font-size: 13px;
+  }
+
+  #patientForm input,
+  #patientForm select{
+    padding: 10px;
+  }
+
+  .footer-box{
+    min-width: 100%;
+  }
+
+}

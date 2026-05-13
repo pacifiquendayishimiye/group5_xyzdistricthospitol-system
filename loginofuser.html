@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Login | Hospital</title>
+
+<style>
+body{
+margin:0;
+font-family:Arial;
+background:linear-gradient(135deg,#1e3c72,#2a5298);
+height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+}
+
+.login-box{
+background:white;
+padding:40px;
+border-radius:12px;
+width:300px;
+box-shadow:0 10px 30px rgba(0,0,0,0.2);
+text-align:center;
+}
+
+input{
+width:100%;
+padding:12px;
+margin:10px 0;
+border-radius:8px;
+border:1px solid #ccc;
+}
+
+button{
+width:100%;
+padding:12px;
+background:#0066cc;
+color:white;
+border:none;
+border-radius:8px;
+cursor:pointer;
+}
+
+button:hover{
+background:#004a99;
+}
+.back-btn {
+  display: inline-block;
+  margin-top: 25px;
+  padding: 12px 22px;
+  background: linear-gradient(135deg, #0077b6, #00b4d8);
+  color: white;
+  text-decoration: none;
+  border-radius: 30px;
+  font-weight: bold;
+  letter-spacing: 0.5px;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+
+/* HOVER EFFECT */
+.back-btn:hover {
+  transform: translateY(-3px) scale(1.05);
+  background: linear-gradient(135deg, #023e8a, #0077b6);
+  box-shadow: 0 6px 18px rgba(0,0,0,0.3);
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="login-box">
+<h2>Login</h2> 
+
+<a href="index.html" class="back-btn">⬅ Back to Home</a><BR><BR>
+<form onsubmit="login(event)">
+<input type="text" id="user" placeholder="Username" required>
+<input type="password" id="pass" placeholder="Password" required>
+
+<button type="submit">Login</button>
+</form>
+</div>
+
+<script>
+function login(e){
+e.preventDefault();
+
+let u = document.getElementById("user").value;
+let p = document.getElementById("pass").value;
+
+/* ADMIN */
+if(u==="admin" && p==="1234"){
+localStorage.setItem("role","admin");
+window.location.href="admin.html";
+}
+
+/* USER */
+else if(u==="user" && p==="1234"){
+localStorage.setItem("role","user");
+window.location.href="APPOINTMENTS.html";
+}
+
+else{
+alert("Wrong username or password");
+}
+}
+</script>
+
+</body>
+</html>

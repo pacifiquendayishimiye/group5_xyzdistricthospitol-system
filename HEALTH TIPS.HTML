@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Health Tips - XYZ Hospital</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <link rel="stylesheet" href="HEALTH TIPS.CSS">
+  <link rel="stylesheet" href="icon.css">
+  
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<header class="navbar">
+
+  <div class="logo-section">
+   <a href="index.html"> <img src="LOGOO.png" class="logo"></a>
+    <h3 data-key="title">XYZ District Hospital</h3>
+  </div>
+
+  <nav class="nav-links">
+
+    <a href="index.html" data-key="home">HOME</a>
+    <a href="SERVICE.HTML" data-key="services">SERVICES</a>
+   
+    
+    <a href="PHARMACY.HTML" data-key="pharmacy">PHARMACY</a>
+    <a href="HEALTH TIPS.HTML" data-key="tips">HEALTH TIPS</a>
+    <a href="CONTACT.HTML" data-key="contact">CONTACT</a>
+  
+
+    <!-- LANGUAGE
+     
+    -->
+    <div class="dropdown">
+      <button class="dropbtn" id="langBtn">English ▾</button>
+
+      <div class="dropdown-content">
+        <a href="javascript:void(0)" onclick="changeLang('en')">English</a>
+        <a href="javascript:void(0)" onclick="changeLang('rw')">Kinyarwanda</a>
+        <a href="javascript:void(0)" onclick="changeLang('fr')">French</a>
+      </div>
+    </div>
+ <button id="darkModeToggle" class="dark-btn">🌙</button>
+  </nav>
+
+</header>
+
+
+<h2 class="title" data-key="pageTitle">Health Tips - XYZ District Hospital</h2>
+
+<!-- IMAGE GALLERY -->
+<div class="image-gallery">
+
+  <div class="image-card">
+    <img src="iryoyuzuye.jfif">
+    <p class="caption" data-key="diet">Balanced diet</p>
+  </div>
+
+  <div class="image-card">
+    <img src="gukaraba.jfif">
+    <p class="caption" data-key="wash">wash hand</p>
+  </div>
+
+  <div class="image-card">
+    <img src="Gukoraimyitozo.jfif">
+    <p class="caption" data-key="exercise">physical exercises</p>
+  </div>
+
+  <div class="image-card">
+    <img src="itabi.jfif">
+    <p class="caption" data-key="smoke">no smoking</p>
+  </div>
+
+  <div class="image-card">
+    <img src="amazi.jfif">
+    <p class="caption" data-key="water">drink water</p>
+  </div>
+
+  <div class="image-card">
+    <img src="gusinzira.jfif">
+    <p class="caption" data-key="sleep">sleeping</p>
+  </div>
+
+</div>
+
+<div class="tips-container" id="tipsContainer"></div>
+<h2 style="text-align:center;">Health Tips</h2>
+
+<div id="tipsContainer"></div>
+
+<script>
+
+function loadTips(){
+
+let tips = JSON.parse(localStorage.getItem("healthTips")) || [];
+
+let output = "";
+
+tips.forEach(t=>{
+
+output += `
+<div style="
+border:1px solid #ccc;
+padding:15px;
+margin:10px;
+border-radius:10px;
+background:white;
+">
+
+<h3>${t.title}</h3>
+<p><b>Author:</b> ${t.author}</p>
+<p>${t.content}</p>
+<p style="font-size:12px;color:gray;">${t.date}</p>
+
+${t.image ? `<img src="${t.image}" style="width:100%;border-radius:8px;">` : ""}
+
+</div>
+`;
+
+});
+
+document.getElementById("tipsContainer").innerHTML = output;
+
+}
+
+loadTips();
+
+</script>
+
+<script src="icon.js"></script>
+<script src="js/HEALTH TIPS.JS"></script><br><br>
+
+<footer class="footer">
+
+<footer class="footer">
+
+  <div class="footer-container">
+
+    <!-- CONTACT -->
+    <div class="footer-box">
+      <h3>Contact Us</h3>
+      <p>Email: info@xyzhospital.rw</p>
+      <p>Phone: +250 788 999 000</p>
+      <p>Emergency: 911 / 912</p>
+      <p>Address: XYZ District Hospital, Rwanda</p>
+    </div>
+
+    
+
+    <!-- QUICK LINKS -->
+    <div class="footer-box">
+      <h3>Quick Links</h3>
+      <a href="login.html">login</a>
+      <a href="index.html">Home</a>
+      <a href="SERVICES.HTML">Services</a>
+     
+      <a href="CONTACT.HTML">Contact</a>
+        <a href="LOGIN.HTML">LOGIN</a>
+       <a href="LOGIN.HTML">LOGIN OF ADMIN</a>
+    </div>
+
+    <!-- SOCIAL MEDIA -->
+    <div class="footer-box">
+      <h3>Follow Us</h3>
+
+      <div class="social-icons">
+        <a href="https://www.facebook.com" target="_blank">
+          <i class="fab fa-facebook-f"></i>
+        </a>
+
+        <a href="https://x.com/YOUR_PAGE" target="_blank">
+          <i class="fab fa-twitter"></i>
+        </a>
+
+        <a href="https://wa.me/250788999000" target="_blank">
+          <i class="fab fa-whatsapp"></i>
+        </a>
+      </div>
+    </div>
+
+    <!-- GOOGLE MAP -->
+    <div class="footer-box">
+      <h3>Our Location</h3>
+
+      <iframe 
+        src="https://www.google.com/maps?q=Rutongo+District+Hospital&output=embed"
+        width="100%" 
+        height="180"
+        style="border:0;"
+        loading="lazy">
+      </iframe>
+
+      <a href="https://maps.google.com/?q=Rutongo+District+Hospital" target="_blank" class="map-btn">
+        Open in Google Maps
+      </a>
+    </div>
+
+  </div>
+
+  <!-- BOTTOM -->
+  <div class="footer-bottom">
+    <p>© 2026 XYZ District Hospital | All rights reserved</p>
+  </div>
+
+</footer>
+<!-- ===== LANGUAGE SCRIPT ===== -->
+<script>
+const translations = {
+en:{
+title:"XYZ District Hospital",
+home:"HOME",
+services:"SERVICES",
+appointments:"APPOINTMENTS",
+records:"PATIENTS RECORDS",
+pharmacy:"PHARMACY",
+tips:"HEALTH TIPS",
+contact:"CONTACT",
+login:"LOGIN",
+pageTitle:"Health Tips - XYZ District Hospital",
+diet:"Balanced diet",
+wash:"Wash hands",
+exercise:"Physical exercises",
+smoke:"No smoking",
+water:"Drink water",
+sleep:"Sleeping",
+addTip:"Add New Health Tip",
+addBtn:"Add Tip",
+contactUs:"Contact Us",
+phone:"Phone",
+emergency:"Emergency",
+address:"Address",
+quick:"Quick Links",
+follow:"Follow Us",
+location:"Our Location",
+openMap:"Open in Google Maps",
+copy:"© 2026 XYZ District Hospital"
+},
+
+rw:{
+title:"Ibitaro bya XYZ",
+home:"AHABANZA",
+services:"SERIVISI",
+appointments:"GUSABA SERIVISI",
+records:"AMADOSIYE",
+pharmacy:"FARUMASI",
+tips:"INAMA Z'UBUZIMA",
+contact:"TUVUGANE",
+login:"INJIRA",
+pageTitle:"Inama z'ubuzima",
+diet:"Ifunguro ryuzuye",
+wash:"Karaba intoki",
+exercise:"Imyitozo ngororamubiri",
+smoke:"Irinde itabi",
+water:"Nywa amazi",
+sleep:"Gusinzira neza",
+addTip:"Ongeramo inama nshya",
+addBtn:"Ongeramo",
+contactUs:"Tuvugishe",
+phone:"Telefone",
+emergency:"Ubutabazi",
+address:"Aderesi",
+quick:"Amahuza",
+follow:"Dukurikire",
+location:"Aho duherereye",
+openMap:"Fungura Map",
+copy:"© 2026 Ibitaro bya XYZ"
+},
+
+fr:{
+title:"Hôpital XYZ",
+home:"ACCUEIL",
+services:"SERVICES",
+appointments:"RENDEZ-VOUS",
+records:"DOSSIERS",
+pharmacy:"PHARMACIE",
+tips:"CONSEILS",
+contact:"CONTACT",
+login:"CONNEXION",
+pageTitle:"Conseils de santé",
+diet:"Alimentation équilibrée",
+wash:"Lavez les mains",
+exercise:"Exercices physiques",
+smoke:"Ne pas fumer",
+water:"Boire de l'eau",
+sleep:"Dormir",
+addTip:"Ajouter un conseil",
+addBtn:"Ajouter",
+contactUs:"Contactez-nous",
+phone:"Téléphone",
+emergency:"Urgence",
+address:"Adresse",
+quick:"Liens rapides",
+follow:"Suivez-nous",
+location:"Localisation",
+openMap:"Ouvrir sur Map",
+copy:"© 2026 Hôpital XYZ"
+}
+};
+
+function changeLang(lang){
+document.querySelectorAll("[data-key]").forEach(el=>{
+const key=el.getAttribute("data-key");
+if(translations[lang][key]){
+el.textContent=translations[lang][key];
+}
+});
+document.getElementById("langBtn").textContent=lang.toUpperCase()+" ▾";
+localStorage.setItem("lang",lang);
+}
+
+window.onload=function(){
+changeLang(localStorage.getItem("lang")||"en");
+}
+<script>
+function loadTips(){
+  let tips = JSON.parse(localStorage.getItem("healthTips")) || [];
+  let container = document.getElementById("tipsContainer");
+
+  let html = "";
+
+  tips.forEach(t => {
+    html += `
+    <div class="tip-card">
+      <img src="${t.image || 'https://via.placeholder.com/300'}">
+      <h3>${t.title}</h3>
+      <p>${t.content}</p>
+      <small>${t.author}</small>
+    </div>
+    `;
+  });
+
+  container.innerHTML = html;
+}
+
+window.onload = loadTips;
+
+</script>
+</script>
+
+</body>
+</html>
