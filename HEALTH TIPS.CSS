@@ -228,7 +228,7 @@ form button:hover {
   background: #0056b3;
 }
 
-/* ================= RESPONSIVE ================= */
+/* ================= RESPONSIVE desgn================= */
 @media (max-width: 900px) {
   .image-gallery {
     grid-template-columns: repeat(2, 1fr);
