@@ -10,7 +10,7 @@ const form = document.getElementById("tipForm");
 const container = document.getElementById("tipsContainer");
 
 // ==========================
-// SAVE DATA
+// SAVE DATA in project
 // ==========================
 function saveTips(){
   localStorage.setItem("xyzHospitalHealthTips", JSON.stringify(tips));
