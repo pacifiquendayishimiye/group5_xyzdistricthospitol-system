@@ -12,6 +12,7 @@ function addPatient() {
   displayPatients();
 }
 
+
 function displayPatients() {
   let table = document.getElementById("patientTable");
   table.innerHTML = "";

@@ -13,6 +13,8 @@ document.addEventListener("DOMContentLoaded", function(){
     "Emergency": ["Dr. Olivier Ndayisaba"]
   };
 
+
+  
   const dept = document.getElementById("department");
   const doctorSelect = document.getElementById("doctor");
   const form = document.getElementById("appointmentForm");
