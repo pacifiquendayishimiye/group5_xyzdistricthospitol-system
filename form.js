@@ -13,6 +13,7 @@ function showLogin(){
     forgotBox.classList.add("hidden");
 }
 
+
 function showForgot(){
     loginBox.classList.add("hidden");
     registerBox.classList.add("hidden");

@@ -8,6 +8,7 @@ if(localStorage.getItem("darkMode") === "on"){
   toggle.textContent = "☀️";
 }
 
+
 toggle.onclick = function(){
   document.body.classList.toggle("dark-mode");
 
