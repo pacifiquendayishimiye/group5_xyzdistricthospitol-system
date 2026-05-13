@@ -66,11 +66,12 @@ border-radius:50%;
 cursor:pointer;
 }
 
-/* DARK MODE */
+/* DARK MODE css */
 .dark-mode{
 background:#121212;
 color:white;
 }
+
 
 .dark-mode table{
 background:#1e1e1e;
