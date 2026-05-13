@@ -8,7 +8,7 @@ document.getElementById("contactForm").addEventListener("submit", function(e){
     let subject = document.getElementById("subject").value;
     let message = document.getElementById("message").value;
 
-    // kubyerekanabnb
+    // kubyerekanabnb js
     alert(
         "Name: " + name + "\n" +
         "Email: " + email + "\n" +

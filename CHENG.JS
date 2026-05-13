@@ -22,7 +22,7 @@ const translations = {
   }
 };
 
-/* ===== CHANGE LANGUAGE ===== */
+/* ===== CHANGE LANGUAGE js ===== */
 function changeLang(lang) {
   document.querySelectorAll("[data-key]").forEach(el => {
     const key = el.getAttribute("data-key");
