@@ -9,6 +9,8 @@ if(localStorage.getItem("darkMode") === "on"){
 }
 
 
+
+
 toggle.onclick = function(){
   document.body.classList.toggle("dark-mode");
 
