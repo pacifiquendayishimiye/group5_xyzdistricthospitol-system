@@ -1,96 +1,139 @@
 /* ================= RESET ================= */
-body {
+*{
   margin: 0;
-  font-family: Arial, sans-serif;
-  background-color: #eaebf8;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-img {
-  max-width: 100%;
-  height: auto;
+/* ================= BODY ================= */
+body{
+  font-family: Arial, sans-serif;
+  background-color: #0077b6;
 }
 
 /* ================= NAVBAR ================= */
-.navbar {
+.navbar{
+  width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
+
   padding: 15px 40px;
-  background-color: #ffffff;
-  border-bottom: 1px solid #ddd;
+
+  /* UBURURU */
+  background-color: #0077b6 !important;
+
+  color: white;
 }
 
-.logo-section {
+/* ================= LOGO ================= */
+.logo-section{
   display: flex;
   align-items: center;
+  gap: 12px;
 }
 
-.logo {
-  height: 50px;
-  margin-right: 10px;
+.logo{
+  height: 55px;
 }
 
-.logo-section h2 {
-  font-size: 22px;
+/* ================= TITLE ================= */
+.logo-section h3{
+  color: white;
+  font-size: 20px;
   font-weight: bold;
 }
 
-/* NAV LINKS */
-.nav-links {
+/* ================= LINKS ================= */
+.nav-links{
   display: flex;
   align-items: center;
   gap: 25px;
 }
 
-.nav-links a {
+.nav-links a{
   text-decoration: none;
-  color: #666;
+  color: white !important;
   font-size: 14px;
   font-weight: 600;
 }
 
-.nav-links a.active,
-.nav-links a:hover {
-  color: #0077b6;
+.nav-links a:hover{
+  color: #d9f0ff;
 }
 
-/* DROPDOWN */
+/* ================= DROPDOWN ================= */
+/* ================= DROPDOWN WRAPPER ================= */
 .dropdown {
   position: relative;
+  display: inline-block;
 }
 
+/* BUTTON */
 .dropbtn {
-  background: none;
+  background: rgba(255, 255, 255, 0.15);
+  color: white;
   border: none;
+  padding: 8px 12px;
   font-size: 14px;
-  color: #666;
+  font-weight: 600;
+  border-radius: 6px;
   cursor: pointer;
+  transition: 0.3s;
 }
 
+.dropbtn:hover {
+  background: rgba(255, 255, 255, 0.25);
+}
+
+/* DROPDOWN BOX */
 .dropdown-content {
   display: none;
   position: absolute;
   right: 0;
-  background-color: #fff;
-  min-width: 120px;
-  box-shadow: 0px 4px 8px rgba(0,0,0,0.1);
+  top: 110%;
+
+  background: white;
+  min-width: 150px;
+
+  border-radius: 10px;
+  overflow: hidden;
+
+  box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+  z-index: 999;
 }
 
+/* LINKS */
 .dropdown-content a {
   display: block;
-  padding: 10px;
+  padding: 10px 14px;
   text-decoration: none;
   color: #333;
+  font-size: 14px;
+  transition: 0.2s;
 }
 
 .dropdown-content a:hover {
-  background-color: #f1f1f1;
+  background: #f1f1f1;
 }
 
+/* SHOW ON HOVER */
 .dropdown:hover .dropdown-content {
   display: block;
 }
 
+/* SMALL ARROW EFFECT */
+.dropbtn::after {
+  content: " ▼";
+  font-size: 10px;
+}
+/* ================= DARK MODE ================= */
+#darkModeToggle{
+  background: white;
+  border: none;
+  padding: 8px 12px;
+  cursor: pointer;
+}
 /* ================= HERO ================= */
 .hero {
   height: 100vh;
@@ -526,7 +569,34 @@ img {
 .opening-hours li {
   margin: 10px 0;
 }
+.title{
+    color:green;
 
+    font-size:40px;
+
+    text-align:center;
+
+    font-weight:bold;
+
+    margin-top:20px;
+
+    font-family:Arial, sans-serif;
+}
+.container{
+    text-align:center;
+    margin-top:30px;
+}
+
+.container img{
+    width: 50%;          /* yagutse mubutambike */
+    max: width 189px;   /* nini kurushaho */
+
+    height:auto;
+
+    border-radius:12px;
+
+    box-shadow:0 4px 15px rgba(0,0,0,0.2);
+}
 /* ================= FOOTER ================= */
 .footer {
   background: #0b1d2a;

@@ -1,76 +1,153 @@
-
-/* HEADER */
-.header{
-background:#0b3a82;
-padding:15px;
-display:flex;
-align-items:center;
-justify-content:space-between;
-color:white;
+/* ================= BODY ================= */
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f4f7fb;
+  padding-top: 80px; /* space for fixed navbar */
 }
 
-.menu{
-display:flex;
-gap:15px;
-}
+/* ================= NAVBAR ================= */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
 
-.links{
   display: flex;
-gap: 15px;
-margin-top: 15px;
-flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
 
+  padding: 15px 40px;
+
+  background: #0077b6;
+
+  color: white;
+
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  z-index: 1000;
 }
 
-
-.nav-links li{
-  list-style: none;
+/* ================= LOGO ================= */
+.logo-section {
+  display: flex;
+  align-items: center;
+  gap: 12px;
 }
-.nav-links a{
-  display:inline-block;
-  padding: 10px 20px;
-  justify-content: center;
-  color: #f4f7fb;
-  border-radius: 30%;
-  gap: 90;
-  max-width: 1000px;
+
+.logo {
+  height: 55px;
+}
+
+.logo-section h3 {
+  color: white;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+/* ================= LINKS ================= */
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 22px;
+}
+
+.nav-links a {
   text-decoration: none;
-  transition: 0,3s;
+  color: white;
+  font-size: 14px;
+  font-weight: 600;
+  transition: 0.3s;
+  padding: 6px 10px;
+  border-radius: 5px;
+}
 
-}
-.nav-links a.active{
-background:#dedee4;
-font-weight: bold;
-color:blue
-}
 .nav-links a:hover {
-  background: hwb(216 11% 17%);
-  color:hsl(214, 23%, 94%);
- 
-}
-.dark-btn{
-background:#222;
-color:white;
-border:none;
-padding:8px 12px;
-border-radius:50%;
-cursor:pointer;
+  background: rgba(255,255,255,0.2);
 }
 
-/* DARK MODE */
-.dark-mode{
-background:#121212;
-color:white;
+/* ================= DROPDOWN ================= */
+.dropdown {
+  position: relative;
+  display: inline-block;
 }
 
-.dark-mode table{
-background:#1e1e1e;
-color:white;
+/* BUTTON */
+.dropbtn {
+  background: rgba(255, 255, 255, 0.15);
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  font-size: 14px;
+  font-weight: 600;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: 0.3s;
 }
 
-.dark-mode th{
-background:#333;
+.dropbtn:hover {
+  background: rgba(255, 255, 255, 0.25);
 }
+
+/* DROPDOWN BOX */
+.dropdown-content {
+  display: none;
+  position: absolute;
+  right: 0;
+  top: 110%;
+
+  background: white;
+  min-width: 150px;
+
+  border-radius: 8px;
+  overflow: hidden;
+
+  box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+  z-index: 999;
+}
+
+/* LINKS */
+.dropdown-content a {
+  display: block;
+  padding: 10px 14px;
+  text-decoration: none;
+  color: #333;
+  font-size: 14px;
+}
+
+.dropdown-content a:hover {
+  background: #f1f1f1;
+}
+
+/* SHOW */
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+/* ARROW */
+.dropbtn::after {
+  content: " ▼";
+  font-size: 10px;
+}
+
+/* ================= DARK MODE BUTTON ================= */
+#darkModeToggle {
+  background: white;
+  border: none;
+  padding: 6px 10px;
+  cursor: pointer;
+  border-radius: 6px;
+}
+/* INPUT + SELECT */
+form input,
+form select{
+    width:100%;
+    padding:12px;
+    border-radius:8px;
+    border:1px solid #ccc;
+    outline:none;
+    font-size:14px;
+    transition:0.3s;
+}
+
 /* ===== FORM ===== */
 #patientForm {
   display: flex;

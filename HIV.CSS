@@ -1,69 +1,153 @@
-/* ================= RESET ================= */
+/* ================= BODY ================= */
 body {
-  margin: 0;
   font-family: Arial, sans-serif;
-  background-color: #eaebf8;
+  background-color: #f4f7fb;
+  padding-top: 80px; /* space for fixed navbar */
 }
 
-img {
-  max-width: 100%;
-  height: auto;
-}
-
-/* ================= NAVBAR  of css================= */
+/* ================= NAVBAR ================= */
 .navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+
   display: flex;
-  align-items: center;
   justify-content: space-between;
+  align-items: center;
+
   padding: 15px 40px;
-  background-color: #ffffff;
-  border-bottom: 1px solid #ddd;
+
+  background: #0077b6;
+
+  color: white;
+
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  z-index: 1000;
 }
 
-/* LOGO */
+/* ================= LOGO ================= */
 .logo-section {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 12px;
 }
 
 .logo {
-  height: 50px;
+  height: 55px;
 }
 
-.logo-section h2 {
-  font-size: 22px;
+.logo-section h3 {
+  color: white;
+  font-size: 18px;
   font-weight: bold;
-  white-space: nowrap;
 }
 
-/* NAV LINKS */
+/* ================= LINKS ================= */
 .nav-links {
   display: flex;
   align-items: center;
-  justify-content: center;
-  gap: 30px;
-  flex: 1;
+  gap: 22px;
 }
 
 .nav-links a {
   text-decoration: none;
-  color: #666;
+  color: white;
   font-size: 14px;
   font-weight: 600;
   transition: 0.3s;
+  padding: 6px 10px;
+  border-radius: 5px;
 }
 
-.nav-links a.active,
 .nav-links a:hover {
-  color: #0077b6;
+  background: rgba(255,255,255,0.2);
 }
 
+/* ================= DROPDOWN ================= */
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
 
-/* SHOW DROPDOWN */
+/* BUTTON */
+.dropbtn {
+  background: rgba(255, 255, 255, 0.15);
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  font-size: 14px;
+  font-weight: 600;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.dropbtn:hover {
+  background: rgba(255, 255, 255, 0.25);
+}
+
+/* DROPDOWN BOX */
+.dropdown-content {
+  display: none;
+  position: absolute;
+  right: 0;
+  top: 110%;
+
+  background: white;
+  min-width: 150px;
+
+  border-radius: 8px;
+  overflow: hidden;
+
+  box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+  z-index: 999;
+}
+
+/* LINKS */
+.dropdown-content a {
+  display: block;
+  padding: 10px 14px;
+  text-decoration: none;
+  color: #333;
+  font-size: 14px;
+}
+
+.dropdown-content a:hover {
+  background: #f1f1f1;
+}
+
+/* SHOW */
 .dropdown:hover .dropdown-content {
   display: block;
 }
+
+/* ARROW */
+.dropbtn::after {
+  content: " ▼";
+  font-size: 10px;
+}
+
+/* ================= DARK MODE BUTTON ================= */
+#darkModeToggle {
+  background: white;
+  border: none;
+  padding: 6px 10px;
+  cursor: pointer;
+  border-radius: 6px;
+}
+/* INPUT + SELECT */
+form input,
+form select{
+    width:100%;
+    padding:12px;
+    border-radius:8px;
+    border:1px solid #ccc;
+    outline:none;
+    font-size:14px;
+    transition:0.3s;
+}
+
 .hiv-section {
   padding: 30px;
 }

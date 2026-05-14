@@ -4,46 +4,135 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Services - XYZ Hospital</title>
+
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 <link rel="stylesheet" href="SERVIC.CSS">
 <link rel="stylesheet" href="icon.css">
-</head>
+
+
+
+
 
 <body>
 
+<!-- NAVBAR (INLINE CSS ONLY) -->
+<header style="
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 40px;
+  background: #0077b6;
+  color: white;
+  z-index: 1000;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  box-sizing: border-box;
+">
 
-  
-<header class="navbar">
-
-  <div class="logo-section">
-   <a href="index.html"> <img src="LOGOO.png" class="logo"></a>
-    <h3 data-key="title">XYZ District<br> Hospital</h3>
+  <!-- LOGO -->
+  <div style="display:flex;align-items:center;gap:12px;">
+    <img src="LOGOO.png" style="height:55px;">
+    <h3 style="margin:0;color:white;font-size:18px;line-height:1.2;">
+      XYZ District<br>Hospital
+    </h3>
   </div>
 
-  <nav class="nav-links">
-    <a href="index.html" data-key="home">HOME</a>
-    <a href="SERVICE.HTML" class="active" data-key="services">SERVICES</a>
+  <!-- LINKS -->
+  <nav style="display:flex;align-items:center;gap:18px;flex-wrap:wrap;">
 
-   
-    <a href="PHARMACY.HTML" data-key="pharmacy">PHARMACY</a>
-    <a href="HEALTH TIPS.HTML" data-key="tips">HEALTH TIPS</a>
-    <a href="CONTACT.HTML" data-key="contact">CONTACT</a>
-   
+    <a href="index.html" style="color:white;text-decoration:none;font-weight:600;">HOME</a>
+    <a href="SERVICE.HTML" style="color:white;text-decoration:none;font-weight:600;">SERVICES</a>
+    <a href="APPOINTMENTS.HTML"style="color:white;text-decoration:none;font-weight:600;">APPOINTMENT</a>
+    <a href="PHARMACY.HTML" style="color:white;text-decoration:none;font-weight:600;">PHARMACY</a>
+    <a href="HEALTH TIPS.HTML" style="color:white;text-decoration:none;font-weight:600;">HEALTH TIPS</a>
+    <a href="CONTACT.HTML" style="color:white;text-decoration:none;font-weight:600;">CONTACT</a>
+    <a href="LOGIN.HTML" style="color:white;text-decoration:none;font-weight:600;">LOGIN</a>
 
-    <!-- LANGUAGE -->
-    <div class="dropdown">
-      <button class="dropbtn" id="langBtn">English ▾</button>
-      <div class="dropdown-content">
-        <a href="javascript:void(0)" onclick="changeLang('en')">English</a>
-        <a href="javascript:void(0)" onclick="changeLang('rw')">Kinyarwanda</a>
-        <a href="javascript:void(0)" onclick="changeLang('fr')">French</a>
+    <!-- LANGUAGE DROPDOWN -->
+    <div style="position:relative;">
+
+      <button onclick="toggleLang()" id="langBtn" style="
+        background: rgba(255,255,255,0.2);
+        color:white;
+        border:none;
+        padding:6px 10px;
+        border-radius:6px;
+        cursor:pointer;
+        font-weight:600;
+      ">
+        English ▾
+      </button>
+
+      <div id="dropdownMenu" style="
+        display:none;
+        position:absolute;
+        right:0;
+        top:120%;
+        background:white;
+        min-width:140px;
+        border-radius:8px;
+        box-shadow:0 8px 20px rgba(0,0,0,0.2);
+        overflow:hidden;
+      ">
+
+        <a href="#" onclick="changeLang('en')" style="display:block;padding:10px;color:#333;text-decoration:none;">English</a>
+        <a href="#" onclick="changeLang('rw')" style="display:block;padding:10px;color:#333;text-decoration:none;">Kinyarwanda</a>
+        <a href="#" onclick="changeLang('fr')" style="display:block;padding:10px;color:#333;text-decoration:none;">French</a>
+
       </div>
     </div>
 
   </nav>
+<button id="darkModeToggle" style="
+  background:white;
+  border:none;
+  padding:8px 12px;
+  cursor:pointer;
+  border-radius:6px;
+  font-size:16px;
+  font-weight:bold;
+  transition:0.3s;
+">
+  🌙
+</button>
+ 
 
-  <button id="darkModeToggle">🌙</button>
 </header>
+
+<!-- SIMPLE JS FOR DROPDOWN -->
+<script>
+function toggleLang(){
+  const menu = document.getElementById("dropdownMenu");
+  menu.style.display = (menu.style.display === "block") ? "none" : "block";
+}
+
+// close when clicking outside
+window.onclick = function(e){
+  const menu = document.getElementById("dropdownMenu");
+  const btn = document.getElementById("langBtn");
+
+  if(!btn.contains(e.target) && !menu.contains(e.target)){
+    menu.style.display = "none";
+  }
+}
+</script>
+
+</body>
+
+
+
+
+<!-- MODAL (ONE ONLY FIXED) -->
+<div id="modal" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="closeModal()">&times;</span>
+    <h2 id="modalTitle"></h2>
+    <p id="modalText"></p>
+  </div>
+</div>
 
 <section class="departments">
 
@@ -56,77 +145,74 @@
       <h3>Outpatient (OPD)</h3>
       <p data-key="opd">Consultation and treatment without admission.</p>
       <p><strong>Head:</strong> Dr. John Doe</p>
-      <button data-key="learn" onclick="openModal('opd')">Learn More</button>
+      <button onclick="openModal('opd')">Learn More</button>
     </div>
 
     <div class="dept-card">
       <h3>Maternity</h3>
       <p data-key="maternity">Pregnancy and newborn care services.</p>
       <p><strong>Head:</strong> Dr. Alice</p>
-      <button data-key="learn" onclick="openModal('maternity')">Learn More</button>
+      <button onclick="openModal('maternity')">Learn More</button>
     </div>
 
     <div class="dept-card">
       <h3>Pediatrics</h3>
       <p data-key="pediatrics">Healthcare services for children.</p>
       <p><strong>Head:</strong> Dr. Eric</p>
-      <button data-key="learn" onclick="openModal('pediatrics')">Learn More</button>
+      <button onclick="openModal('pediatrics')">Learn More</button>
     </div>
 
     <div class="dept-card">
       <h3>Pharmacy</h3>
       <p data-key="pharmacyDesc">Medicines and prescriptions.</p>
       <p><strong>Head:</strong> Mr. Bosco</p>
-      <button data-key="learn" onclick="openModal('pharmacy')">Learn More</button>
+      <button onclick="openModal('pharmacy')">Learn More</button>
     </div>
 
     <div class="dept-card">
       <h3>Laboratory</h3>
       <p data-key="lab">Medical tests and diagnostics.</p>
       <p><strong>Head:</strong> Dr. Marie</p>
-      <button data-key="learn" onclick="openModal('lab')">Learn More</button>
+      <button onclick="openModal('lab')">Learn More</button>
     </div>
 
     <div class="dept-card">
       <h3>Dental</h3>
       <p data-key="dental">Oral and dental care.</p>
       <p><strong>Head:</strong> Dr. Diane</p>
-      <button data-key="learn" onclick="openModal('dental')">Learn More</button>
+      <button onclick="openModal('dental')">Learn More</button>
     </div>
 
   </div>
 </section>
-
-<!-- MODAL -->
-<div id="modal" class="modal">
-  <div class="modal-content">
-    <span class="close" onclick="closeModal()">&times;</span>
-    <h2 id="modal-title"></h2>
-    <p id="modal-text"></p>
-  </div>
-</div>
-
 <script>
 function openModal(type){
-const data={
-opd:"Full outpatient services.",
-maternity:"Maternal care services.",
-pediatrics:"Child healthcare.",
-pharmacy:"Medicines and drugs.",
-lab:"Diagnostic tests.",
-dental:"Dental treatment."
-};
+  const data = departmentInfo[type];
 
-document.getElementById("modal-title").innerText=type;
-document.getElementById("modal-text").innerText=data[type];
-document.getElementById("modal").style.display="block";
+  if(!data){
+    console.error("Department not found:", type);
+    return;
+  }
+
+  document.getElementById("modalTitle").innerText = data.title;
+  document.getElementById("modalText").innerText = data.text;
+
+  document.getElementById("modal").style.display = "flex";
 }
 
 function closeModal(){
-document.getElementById("modal").style.display="none";
+  document.getElementById("modal").style.display = "none";
+}
+
+window.onclick = function(e){
+  let modal = document.getElementById("modal");
+  if(e.target === modal){
+    modal.style.display = "none";
+  }
 }
 </script>
-
+</body>
+</html>
 <footer class="footer">
 
   <div class="footer-container">
@@ -293,6 +379,51 @@ localStorage.setItem("lang",lang);
 
 window.onload=function(){
 changeLang(localStorage.getItem("lang")||"en");
+}
+
+const departmentInfo = {
+  opd: {
+    title: "Outpatient Department (OPD)",
+    text: "The Outpatient Department offers medical consultation, diagnosis, and treatment without hospital admission. Patients are seen by doctors, given prescriptions, and advised for follow-up visits when necessary."
+  },
+  maternity: {
+    title: "Maternity Department",
+    text: "This department provides antenatal care, safe delivery services, postnatal care, and newborn monitoring. We ensure safety for both mother and baby with professional midwives and doctors."
+  },
+  pediatrics: {
+    title: "Pediatrics Department",
+    text: "We provide healthcare services for infants, children, and teenagers. Services include vaccinations, treatment of childhood diseases, and growth monitoring."
+  },
+  pharmacy: {
+    title: "Pharmacy Department",
+    text: "The pharmacy dispenses prescribed medications, provides drug counseling, and ensures safe use of medicines under professional supervision."
+  },
+  lab: {
+    title: "Laboratory Department",
+    text: "The lab performs blood tests, urine analysis, and other diagnostic investigations to help doctors make accurate medical decisions."
+  },
+  dental: {
+    title: "Dental Department",
+    text: "We offer oral health services including teeth cleaning, extraction, filling, and treatment of gum diseases using modern equipment."
+  }
+};
+
+function openModal(dept){
+  document.getElementById("modal").style.display = "flex";
+  document.getElementById("modalTitle").innerText = departmentInfo[dept].title;
+  document.getElementById("modalText").innerText = departmentInfo[dept].text;
+}
+
+function closeModal(){
+  document.getElementById("modal").style.display = "none";
+}
+
+// close when clicking outside
+window.onclick = function(e){
+  let modal = document.getElementById("modal");
+  if(e.target === modal){
+    modal.style.display = "none";
+  }
 }
 </script>
 

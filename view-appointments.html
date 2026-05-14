@@ -21,6 +21,30 @@ font-family:Arial;
 background:#f4f7fb;
 }
 
+.card{
+background:white;
+padding:15px;
+margin:10px 0;
+border-radius:10px;
+box-shadow:0 0 10px rgba(0,0,0,0.1);
+}
+
+button{
+padding:8px 12px;
+border:none;
+border-radius:5px;
+cursor:pointer;
+margin:5px;
+color:white;
+}
+
+.approve{
+background:green;
+}
+
+.reject{
+background:red;
+}
 </style>
 </head>
 
@@ -89,9 +113,14 @@ window.location.href = "index.html";
 </div>
 </header>
 
-
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Admin Dashboard | Hospital System</title>
 
 <style>
+
 body{
 margin:0;
 font-family:Arial;
@@ -100,52 +129,75 @@ padding:20px;
 color:#333;
 }
 
-/* container */
+/* CONTAINER */
 .container{
-max-width:1000px;
+max-width:1100px;
 margin:auto;
 background:white;
 padding:25px;
 border-radius:12px;
-box-shadow:0 10px 25px rgba(0,0,0,0.3);
+box-shadow:0 10px 25px rgba(0,0,0,0.2);
 }
 
-/* title */
+/* TITLE */
 h1{
 text-align:center;
-color:#15d63f;
+color:#157da7;
+margin-bottom:20px;
 }
 
-/* logout button */
-.logout{
-float:right;
-padding:10px 20px;
-background:#d90429;
-color:white;
+/* TOP BUTTONS */
+.top-bar{
+display:flex;
+justify-content:space-between;
+align-items:center;
+flex-wrap:wrap;
+margin-bottom:20px;
+}
+
+/* BUTTONS */
+.logout,
+.home-btn{
+padding:10px 18px;
 border:none;
 border-radius:8px;
 cursor:pointer;
 font-weight:bold;
+color:white;
+text-decoration:none;
+}
+
+.logout{
+background:#d90429;
 }
 
 .logout:hover{
 background:#a8001f;
 }
 
-/* search */
-input{
-padding:10px;
-width:60%;
-margin:10px 0;
-border:1px solid #ccc;
-border-radius:6px;
+.home-btn{
+background:#157da7;
 }
 
-/* table */
+.home-btn:hover{
+background:#0b5d7d;
+}
+
+/* SEARCH */
+input{
+padding:10px;
+width:100%;
+max-width:400px;
+border:1px solid #ccc;
+border-radius:6px;
+margin-bottom:20px;
+}
+
+/* TABLE */
 table{
 width:100%;
 border-collapse:collapse;
-margin-top:20px;
+margin-top:10px;
 }
 
 th{
@@ -164,37 +216,95 @@ tr:hover{
 background:#f1f1f1;
 }
 
-/* delete button */
-button.delete{
-padding:6px 10px;
-background:red;
-color:white;
+/* ACTION BUTTONS */
+button{
+padding:7px 12px;
 border:none;
 border-radius:5px;
 cursor:pointer;
+color:white;
+margin:2px;
 }
 
-button.delete:hover{
+.approve{
+background:green;
+}
+
+.approve:hover{
+background:darkgreen;
+}
+
+.reject{
+background:red;
+}
+
+.reject:hover{
 background:darkred;
 }
-</style>
 
+.delete{
+background:#444;
+}
+
+.delete:hover{
+background:black;
+}
+
+/* STATUS BADGES */
+.status{
+padding:5px 10px;
+border-radius:20px;
+color:white;
+font-size:12px;
+font-weight:bold;
+}
+
+.pending{
+background:orange;
+}
+
+.approved{
+background:green;
+}
+
+.rejected{
+background:red;
+}
+
+</style>
 </head>
 
 <body>
 
 <div class="container">
 
-<button class="logout" onclick="logout()">Logout</button>
+<div class="top-bar">
+
+<a href="index.html" class="home-btn">
+⬅ Back Home
+</a>
+
+<button class="logout" onclick="logout()">
+Logout
+</button>
+
+</div>
 
 <h1>Appointments Dashboard</h1>
 
-<input type="text" id="search" placeholder="Search..." onkeyup="loadData()">
+<input 
+type="text" 
+id="search" 
+placeholder="Search by name, phone or department..."
+onkeyup="loadData()"
+>
 
 <table>
+
 <thead>
 <tr>
 <th>Name</th>
+<th>Email</th>
 <th>Mutuelle</th>
 <th>Phone</th>
 <th>Department</th>
@@ -202,47 +312,95 @@ background:darkred;
 <th>Date</th>
 <th>Time</th>
 <th>Status</th>
-<th>Action</th>
+<th>Actions</th>
 </tr>
 </thead>
 
 <tbody id="table"></tbody>
+
 </table>
 
 </div>
 
 <script>
 
-// LOAD DATA
+/* LOAD TABLE DATA */
 function loadData(){
 
 let data = JSON.parse(localStorage.getItem("appointments")) || [];
-let search = document.getElementById("search").value.toLowerCase();
+
+let search = document
+.getElementById("search")
+.value
+.toLowerCase();
 
 let rows = "";
 
 data.forEach((item,index)=>{
 
 if(
+
 item.name.toLowerCase().includes(search) ||
+
 item.phone.toLowerCase().includes(search) ||
+
 item.department.toLowerCase().includes(search)
+
 ){
 
 rows += `
+
 <tr>
+
 <td>${item.name}</td>
+
+<td>${item.email || "No Email"}</td>
+
 <td>${item.mutuelle}</td>
+
 <td>${item.phone}</td>
+
 <td>${item.department}</td>
+
 <td>${item.doctor}</td>
+
 <td>${item.date}</td>
+
 <td>${item.time}</td>
-<td>${item.status}</td>
+
 <td>
-<button class="delete" onclick="deleteData(${index})">Delete</button>
+<span class="status ${item.status.toLowerCase()}">
+${item.status}
+</span>
 </td>
+
+<td>
+
+<button 
+class="approve" 
+onclick="approve(${index})"
+>
+Approve
+</button>
+
+<button 
+class="reject" 
+onclick="reject(${index})"
+>
+Reject
+</button>
+
+<button 
+class="delete" 
+onclick="deleteData(${index})"
+>
+Delete
+</button>
+
+</td>
+
 </tr>
+
 `;
 
 }
@@ -253,28 +411,80 @@ document.getElementById("table").innerHTML = rows;
 
 }
 
-// DELETE
-function deleteData(index){
+/* APPROVE */
+function approve(index){
 
 let data = JSON.parse(localStorage.getItem("appointments")) || [];
-data.splice(index,1);
-localStorage.setItem("appointments", JSON.stringify(data));
+
+data[index].status = "Approved";
+
+localStorage.setItem(
+"appointments",
+JSON.stringify(data)
+);
+
 loadData();
 
 }
 
-// LOGOUT
-function logout(){
+/* REJECT */
+function reject(index){
 
-localStorage.removeItem("role"); // optional security
-window.location.href = "adini.html";
+let data = JSON.parse(localStorage.getItem("appointments")) || [];
+
+data[index].status = "Rejected";
+
+localStorage.setItem(
+"appointments",
+JSON.stringify(data)
+);
+
+loadData();
 
 }
 
-// INIT
+/* DELETE */
+function deleteData(index){
+
+let confirmDelete = confirm(
+"Delete this appointment?"
+);
+
+if(confirmDelete){
+
+let data = JSON.parse(localStorage.getItem("appointments")) || [];
+
+data.splice(index,1);
+
+localStorage.setItem(
+"appointments",
+JSON.stringify(data)
+);
+
+loadData();
+
+}
+
+}
+
+/* LOGOUT */
+function logout(){
+
+localStorage.removeItem("role");
+
+window.location.href = "login.html";
+
+}
+
+/* INIT */
 loadData();
 
 </script>
+
+</body>
+</html>
+
+
    
 <footer class="footer">
 

@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>My Appointments</title>
+
+<style>
+
+body{
+font-family:Arial;
+background:#f4f6f9;
+padding:20px;
+}
+
+h2{
+text-align:center;
+}
+
+.container{
+max-width:800px;
+margin:auto;
+}
+
+.card{
+background:white;
+padding:15px;
+margin:10px 0;
+border-radius:10px;
+box-shadow:0 0 10px rgba(0,0,0,0.1);
+}
+
+.badge{
+padding:5px 10px;
+border-radius:5px;
+color:white;
+font-size:12px;
+font-weight:bold;
+}
+
+/* STATUS COLORS */
+.pending{
+background:orange;
+}
+
+.approved{
+background:green;
+}
+
+.rejected{
+background:red;
+}
+
+/* BUTTON */
+.btn{
+padding:10px 15px;
+background:#0077b6;
+color:white;
+border:none;
+border-radius:25px;
+cursor:pointer;
+text-decoration:none;
+display:inline-block;
+margin-top:20px;
+}
+
+.btn:hover{
+background:#023e8a;
+}
+
+</style>
+</head>
+
+<body>
+
+<h2>My Appointments</h2>
+
+<div class="container" id="list"></div>
+
+<div style="text-align:center;">
+  <a href="index.html" class="btn">
+     ⬅ Back Home
+  </a>
+</div>
+
+<script>
+
+// CURRENT USER
+let currentUser = localStorage.getItem("currentUser");
+
+// ALL APPOINTMENTS
+let data = JSON.parse(localStorage.getItem("appointments")) || [];
+
+let list = document.getElementById("list");
+
+// FILTER USER APPOINTMENTS
+let userAppointments = data.filter(app => app.email === currentUser);
+
+// NO LOGIN
+if(!currentUser){
+
+list.innerHTML = `
+<p style="text-align:center;color:red;">
+Please login first
+</p>
+`;
+
+}
+
+// NO APPOINTMENTS
+else if(userAppointments.length === 0){
+
+list.innerHTML = `
+<p style="text-align:center;">
+No appointments found
+</p>
+`;
+
+}
+
+// SHOW APPOINTMENTS
+else{
+
+userAppointments.forEach(app => {
+
+let div = document.createElement("div");
+
+div.className = "card";
+
+div.innerHTML = `
+
+<b>Name:</b> ${app.name}<br><br>
+
+<b>Email:</b> ${app.email}<br><br>
+
+<b>Mutuelle:</b> ${app.mutuelle}<br><br>
+
+<b>Phone:</b> ${app.phone}<br><br>
+
+<b>Department:</b> ${app.department}<br><br>
+
+<b>Doctor:</b> ${app.doctor}<br><br>
+
+<b>Date:</b> ${app.date}<br><br>
+
+<b>Time:</b> ${app.time}<br><br>
+
+<b>Status:</b>
+
+<span class="badge ${app.status.toLowerCase()}">
+${app.status}
+</span>
+
+`;
+
+list.appendChild(div);
+
+});
+
+}
+
+</script>
+
+</body>
+</html>

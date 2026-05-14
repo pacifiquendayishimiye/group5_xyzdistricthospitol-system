@@ -24,7 +24,7 @@
     <a href="index.html" data-key="home">HOME</a>
     <a href="SERVICE.HTML" data-key="services">SERVICES</a>
    
-
+ <a href="APPOINTMENTS.HTML" data-key="appointment">APPOINTMENT</a>
     <a href="PHARMACY.HTML" data-key="pharmacy">PHARMACY</a>
     <a href="HEALTH TIPS.HTML" >HEALTHTIPS</a>
     <a href="CONTACT.HTML" data-key="contact">CONTACT</a>
@@ -42,7 +42,23 @@
         <a href="javascript:void(0)" onclick="changeLang('fr')">French</a>
       </div>
     </div>
- <button id="darkModeToggle" class="dark-btn">🌙</button>
+ <button 
+id="darkModeToggle"
+
+style="
+padding:10px 15px;
+background:#222;
+color:white;
+border:none;
+border-radius:8px;
+cursor:pointer;
+font-size:18px;
+box-shadow:0 4px 10px rgba(0,0,0,0.2);
+transition:0.3s;
+"
+>
+🌙
+</button>
   </nav>
 
 </header>
@@ -53,38 +69,7 @@
 <title>Book Appointment</title>
 
 <style>
-body{
-font-family:Arial;
-background:#f4f6f9;
-padding:20px;
-}
 
-form{
-max-width:500px;
-margin:auto;
-background:white;
-padding:20px;
-border-radius:10px;
-box-shadow:0 0 10px rgba(0,0,0,0.1);
-}
-
-input, select, textarea{
-width:100%;
-padding:10px;
-margin:10px 0;
-border-radius:5px;
-border:1px solid #ccc;
-}
-
-button{
-width:100%;
-padding:12px;
-background:#2e8b57;
-color:white;
-border:none;
-border-radius:5px;
-cursor:pointer;
-}
 </style>
 
 </head>
@@ -124,8 +109,47 @@ cursor:pointer;
 
 </form>
 
+<a href="view-appointmentsofuser.html">
+<button type="button">View My Appointments</button>
+</a>
 <script>
+  document.getElementById("appointmentForm").addEventListener("submit", function(e){
+ e.preventDefault();
 
+ let appointment = {
+   name: document.getElementById("name").value,
+   email: localStorage.getItem("currentUser"),
+   mutuelle: document.getElementById("mutuelle").value,
+   phone: document.getElementById("phone").value,
+   department: document.getElementById("department").value,
+   doctor: document.getElementById("doctor").value,
+   date: document.getElementById("date").value,
+   time: document.getElementById("time").value,
+   status: "Pending"
+ };
+
+ let data = JSON.parse(localStorage.getItem("appointments")) || [];
+
+ data.push(appointment);
+
+ localStorage.setItem("appointments", JSON.stringify(data));
+
+ alert("Appointment Booked!");
+
+ document.getElementById("appointmentForm").reset();
+ document.getElementById("doctor").innerHTML = "<option value=''>Select Doctor</option>";
+});
+let appointment = {
+ name: document.getElementById("name").value,
+ email: localStorage.getItem("currentUser"),
+ mutuelle: document.getElementById("mutuelle").value,
+ phone: document.getElementById("phone").value,
+ department: document.getElementById("department").value,
+ doctor: document.getElementById("doctor").value,
+ date: document.getElementById("date").value,
+ time: document.getElementById("time").value,
+ status: "Pending"
+};
 // 👨‍⚕️ DOCTORS BY DEPARTMENT
 let doctors = {
 "OPD": ["Dr John", "Dr Alice"],
@@ -186,7 +210,99 @@ document.getElementById("appointmentForm").reset();
 document.getElementById("doctor").innerHTML = "<option value=''>Select Doctor</option>";
 
 });
+<!-- LANGUAGE SCRIPT -->
 
+const translations={
+en:{
+title:"XYZ District Hospital",
+home:"HOME",
+services:"SERVICES",
+appointments:"APPOINTMENTS",
+records:"PATIENTS RECORDS",
+pharmacy:"PHARMACY",
+tips:"HEALTH TIPS",
+contact:"CONTACT",
+login:"LOGIN",
+deptTitle:"Hospital Departments",
+subtitle:"XYZ District Hospital Services",
+learn:"Learn More",
+opd:"Consultation and treatment without admission.",
+maternity:"Pregnancy care services.",
+pediatrics:"Child healthcare.",
+pharmacyDesc:"Medicines and prescriptions.",
+lab:"Medical tests.",
+dental:"Dental care.",
+contactUs:"Contact Us",
+quick:"Quick Links",
+follow:"Follow Us",
+copy:"© 2026 XYZ Hospital"
+},
+
+rw:{
+title:"Ibitaro bya XYZ",
+home:"AHABANZA",
+services:"SERIVISI",
+appointments:"GUSABA",
+records:"AMADOSIYE",
+pharmacy:"FARUMASI",
+tips:"INAMA",
+contact:"TUVUGANE",
+login:"INJIRA",
+deptTitle:"Amashami y'ibitaro",
+subtitle:"Serivisi z'ibitaro",
+learn:"Menya byinshi",
+opd:"Ubuvuzi budasaba kurara",
+maternity:"Serivisi z'ababyeyi",
+pediatrics:"Ubuvuzi bw'abana",
+pharmacyDesc:"Imiti",
+lab:"Ibipimo",
+dental:"Amenyo",
+contactUs:"Tuvugishe",
+quick:"Amahuza",
+follow:"Dukurikire",
+copy:"© 2026 Ibitaro bya XYZ"
+},
+
+fr:{
+title:"Hôpital XYZ",
+home:"ACCUEIL",
+services:"SERVICES",
+appointments:"RENDEZ-VOUS",
+records:"DOSSIERS",
+pharmacy:"PHARMACIE",
+tips:"CONSEILS",
+contact:"CONTACT",
+login:"CONNEXION",
+deptTitle:"Départements",
+subtitle:"Services hospitaliers",
+learn:"Voir plus",
+opd:"Consultation",
+maternity:"Maternité",
+pediatrics:"Pédiatrie",
+pharmacyDesc:"Médicaments",
+lab:"Laboratoire",
+dental:"Dentaire",
+contactUs:"Contact",
+quick:"Liens",
+follow:"Suivez-nous",
+copy:"© 2026 Hôpital XYZ"
+}
+};
+
+function changeLang(lang){
+document.querySelectorAll("[data-key]").forEach(el=>{
+const key=el.getAttribute("data-key");
+if(translations[lang][key]){
+el.textContent=translations[lang][key];
+}
+});
+document.getElementById("langBtn").textContent=lang.toUpperCase()+" ▾";
+localStorage.setItem("lang",lang);
+}
+
+window.onload=function(){
+changeLang(localStorage.getItem("lang")||"en");
+}
 </script>
 <footer class="footer">
 

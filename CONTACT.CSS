@@ -1,78 +1,134 @@
-/* ================= RESET ================= */
-body {
-  margin: 0;
+
+
+/* ================= BODY ================= */
+body{
   font-family: Arial, sans-serif;
-  background-color: #f5f7fa;
+  background-color: #0077b6;
 }
 
 /* ================= NAVBAR ================= */
-.navbar {
+.navbar{
+  width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
+
   padding: 15px 40px;
-  background: #ffffff;
-  border-bottom: 1px solid #ddd;
+
+  /* UBURURU */
+  background-color: #0077b6 !important;
+
+  color: white;
 }
 
-/* LOGO of */
-.logo-section {
+/* ================= LOGO ================= */
+.logo-section{
   display: flex;
   align-items: center;
+  gap: 12px;
 }
 
-.logo {
-  height: 60px;
-  margin-right: 10px;
+.logo{
+  height: 55px;
 }
 
-.logo-section h2 {
-  font-size: 22px;
-  margin: 0;
+/* ================= TITLE ================= */
+.logo-section h3{
+  color: white;
+  font-size: 20px;
+  font-weight: bold;
 }
 
-/* ================= NAV LINKS  css================= */
-.nav-links {
+/* ================= LINKS ================= */
+.nav-links{
   display: flex;
+  align-items: center;
   gap: 25px;
 }
 
-.nav-links a {
+.nav-links a{
   text-decoration: none;
-  color: #555;
+  color: white !important;
   font-size: 14px;
   font-weight: 600;
 }
 
-.nav-links a:hover {
-  color: #0077b6;
+.nav-links a:hover{
+  color: #d9f0ff;
 }
 
 /* ================= DROPDOWN ================= */
+/* ================= DROPDOWN WRAPPER ================= */
 .dropdown {
   position: relative;
+  display: inline-block;
 }
 
+/* BUTTON */
+.dropbtn {
+  background: rgba(255, 255, 255, 0.15);
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  font-size: 14px;
+  font-weight: 600;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.dropbtn:hover {
+  background: rgba(255, 255, 255, 0.25);
+}
+
+/* DROPDOWN BOX */
 .dropdown-content {
   display: none;
   position: absolute;
   right: 0;
-  top: 30px;
-  background: #fff;
-  min-width: 130px;
-  border-radius: 8px;
-  box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+  top: 110%;
+
+  background: white;
+  min-width: 150px;
+
+  border-radius: 10px;
+  overflow: hidden;
+
+  box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+  z-index: 999;
 }
 
+/* LINKS */
 .dropdown-content a {
   display: block;
-  padding: 10px;
+  padding: 10px 14px;
+  text-decoration: none;
+  color: #333;
+  font-size: 14px;
+  transition: 0.2s;
 }
 
+.dropdown-content a:hover {
+  background: #f1f1f1;
+}
+
+/* SHOW ON HOVER */
 .dropdown:hover .dropdown-content {
   display: block;
 }
 
+/* SMALL ARROW EFFECT */
+.dropbtn::after {
+  content: " ▼";
+  font-size: 10px;
+}
+/* ================= DARK MODE ================= */
+#darkModeToggle{
+  background: white;
+  border: none;
+  padding: 8px 12px;
+  cursor: pointer;
+}
 /* ================= CONTACT ================= */
 .contact-title{
   text-align:center;
