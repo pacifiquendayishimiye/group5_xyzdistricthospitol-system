@@ -198,3 +198,30 @@ body.dark .dropdown-content {
 body.dark .dropdown-content a {
   color: #ccc;
 }
+/* ================= FIX IMAGE GALLERY DARK MODE ================= */
+
+body.dark .image-card{
+  background:#1e1e1e;
+  border:1px solid #333;
+}
+
+/* captions */
+body.dark .caption{
+  color:#ffffff !important;
+}
+
+/* likes text */
+body.dark p{
+  color:#ffffff;
+}
+
+/* ensure buttons readable */
+body.dark .like-btn,
+body.dark .bad-btn{
+  color:#fff;
+}
+
+/* fix gallery container spacing visibility */
+body.dark .image-gallery{
+  background:transparent;
+}

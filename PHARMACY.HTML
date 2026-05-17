@@ -25,9 +25,7 @@
   <nav class="nav-links">
     <a href="index.html" class="active">HOME</a>
     <a href="SERVICE.HTML">SERVICES</a>
-   
-   
-   <a href="APPOINTMENTS.HTML">APPOINTMENT</a>
+    <a href="loginofuser.html"> APPOINTMENTS</a>
     <a href="PHARMACY.HTML">PHARMACY</a>
     <a href="HEALTH TIPS.HTML">HEALTH TIPS</a>
     <a href="CONTACT.HTML">CONTACT</a>
@@ -51,6 +49,40 @@
 <h2 style="text-align:center; margin-top:20px;" data-key="pharmacyTitle">
   PHARMACY MANAGEMENT
 </h2>
+<style>
+
+
+
+.like-btn{
+  background:#28a745;
+  color:white;
+  border:none;
+  padding:6px 12px;
+  border-radius:8px;
+  cursor:pointer;
+  margin-top:5px;
+}
+
+.bad-btn{
+  background:#dc3545;
+  color:white;
+  border:none;
+  padding:6px 12px;
+  border-radius:8px;
+  cursor:pointer;
+  margin-top:5px;
+  margin-left:5px;
+}
+
+.response{
+  font-weight:bold;
+  margin-top:5px;
+  color:#007bff;
+}
+
+</style>
+
+
 
 <!-- ===== IMAGE GALLERY ===== -->
 <div class="image-gallery">
@@ -58,37 +90,153 @@
   <div class="image-card">
     <img src="UNSPLASH.jfif">
     <p class="caption">Pain Killers</p>
+
+    <button class="like-btn"
+      onclick="react('like1','bad1','res1','like')">
+      👍 Like
+    </button>
+
+    <button class="bad-btn"
+      onclick="react('like1','bad1','res1','bad')">
+      👎 Bad
+    </button>
+
+    <p id="like1">0 Likes</p>
+    <p id="bad1">0 Bad</p>
+    <p class="response" id="res1"></p>
   </div>
+
+
 
   <div class="image-card">
     <img src="FREEPIK.jfif">
     <p class="caption">Antibiotics</p>
+
+    <button class="like-btn"
+      onclick="react('like2','bad2','res2','like')">
+      👍 Like
+    </button>
+
+    <button class="bad-btn"
+      onclick="react('like2','bad2','res2','bad')">
+      👎 Bad
+    </button>
+
+    <p id="like2">0 Likes</p>
+    <p id="bad2">0 Bad</p>
+    <p class="response" id="res2"></p>
   </div>
+
+
 
   <div class="image-card">
     <img src="PNGTREE.jfif">
     <p class="caption">Vitamins</p>
+
+    <button class="like-btn"
+      onclick="react('like3','bad3','res3','like')">
+      👍 Like
+    </button>
+
+    <button class="bad-btn"
+      onclick="react('like3','bad3','res3','bad')">
+      👎 Bad
+    </button>
+
+    <p id="like3">0 Likes</p>
+    <p id="bad3">0 Bad</p>
+    <p class="response" id="res3"></p>
   </div>
+
+
 
   <div class="image-card">
     <img src="PIXABAY.jfif">
     <p class="caption">Capsules</p>
+
+    <button class="like-btn"
+      onclick="react('like4','bad4','res4','like')">
+      👍 Like
+    </button>
+
+    <button class="bad-btn"
+      onclick="react('like4','bad4','res4','bad')">
+      👎 Bad
+    </button>
+
+    <p id="like4">0 Likes</p>
+    <p id="bad4">0 Bad</p>
+    <p class="response" id="res4"></p>
   </div>
+
+
 
   <div class="image-card">
     <img src="ALAMY.jfif">
     <p class="caption">Syrups</p>
+
+    <button class="like-btn"
+      onclick="react('like5','bad5','res5','like')">
+      👍 Like
+    </button>
+
+    <button class="bad-btn"
+      onclick="react('like5','bad5','res5','bad')">
+      👎 Bad
+    </button>
+
+    <p id="like5">0 Likes</p>
+    <p id="bad5">0 Bad</p>
+    <p class="response" id="res5"></p>
   </div>
+
+
 
   <div class="image-card">
     <img src="HARVARD HEALTH.jfif">
     <p class="caption">Injections</p>
+
+    <button class="like-btn"
+      onclick="react('like6','bad6','res6','like')">
+      👍 Like
+    </button>
+
+    <button class="bad-btn"
+      onclick="react('like6','bad6','res6','bad')">
+      👎 Bad
+    </button>
+
+    <p id="like6">0 Likes</p>
+    <p id="bad6">0 Bad</p>
+    <p class="response" id="res6"></p>
   </div>
 
 </div>
-<div id="medicineList"></div>
 
 
+
+<script>
+
+function react(likeId,badId,resId,type){
+
+  let likeEl = document.getElementById(likeId);
+  let badEl = document.getElementById(badId);
+  let resEl = document.getElementById(resId);
+
+  if(type === "like"){
+    let count = parseInt(likeEl.innerText);
+    likeEl.innerText = (count + 1) + " Likes";
+    resEl.innerText = "Thank you for liking 👍";
+  }
+
+  if(type === "bad"){
+    let count = parseInt(badEl.innerText);
+    badEl.innerText = (count + 1) + " Bad";
+    resEl.innerText = "We will improve 👎";
+  }
+}
+
+</script>
 
 <style>
 body{
@@ -189,10 +337,10 @@ cursor:pointer;
      
       <a href="index.html">Home</a>
       <a href="SERVICES.HTML">Services</a>
- 
+ <a href="loginofuser.html"> APPOINTMENTS</a>
       <a href="CONTACT.HTML">Contact</a>
         <a href="LOGIN.HTML">LOGIN</a>
-       <a href="LOGIN.HTML">LOGIN OF ADMIN</a>
+      
     </div>
 
     <!-- SOCIAL MEDIA -->
@@ -232,7 +380,7 @@ cursor:pointer;
     </div>
 
   </div>
-
+<p style="text-align: center;color: darkgray;"><a style=" text-decoration:none;" href="adimin.html">LOGIN OF ADMIN</a></p>
   <!-- BOTTOM -->
   <div class="footer-bottom">
     <p>© 2026 XYZ District Hospital | All rights reserved</p>

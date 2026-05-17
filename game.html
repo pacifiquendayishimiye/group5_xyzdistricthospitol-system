@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Medicine Quiz Game</title>
+
+<style>
+body{
+    font-family:Arial;
+    background:#f4f8ff;
+    text-align:center;
+    padding:30px;
+}
+
+h1{ color:#0d6efd; }
+
+.start-screen{
+    background:#fff;
+    padding:40px;
+    border-radius:10px;
+    box-shadow:0 0 10px rgba(0,0,0,0.1);
+    max-width:400px;
+    margin:auto;
+}
+
+.game-box{
+    display:none;
+    background:#fff;
+    padding:30px;
+    border-radius:10px;
+    box-shadow:0 0 10px rgba(0,0,0,0.1);
+    max-width:500px;
+    margin:auto;
+}
+
+button{
+    padding:12px;
+    margin:10px;
+    border:none;
+    border-radius:5px;
+    background:#0d6efd;
+    color:#fff;
+    cursor:pointer;
+}
+
+button:hover{ background:#0044aa; }
+
+.option-btn{
+    display:block;
+    width:100%;
+}
+
+.score{ font-size:20px; margin-top:20px; }
+
+.result{ margin-top:15px; font-weight:bold; }
+
+.timer{ font-size:18px; color:red; }
+</style>
+</head>
+
+<body>
+
+<h1>🩺 Hitamo Umuti Ukwiye</h1>
+
+<!-- START -->
+<div class="start-screen" id="startScreen">
+    <h2>Welcome to Game</h2>
+    <button onclick="startGame()">▶️ Start Game</button>
+</div>
+
+<!-- GAME -->
+<div class="game-box" id="gameBox">
+
+    <div class="timer">⏱️ <span id="time">10</span>s</div>
+
+    <h3 id="question"></h3>
+
+    <div id="options"></div>
+
+    <div class="result" id="result"></div>
+
+    <div class="score">Score: <span id="score">0</span></div>
+
+    <button onclick="nextQuestion()">Next</button>
+    <button onclick="restartGame()">🔄 Restart</button>
+   <button onclick="window.location.href='index.html'">🔙 Back</button>
+
+</div>
+
+<!-- 🔊 LOCAL SOUNDS (FOLDER sounds/) -->
+<audio id="correctSound" src="correct.mp3"></audio>
+<audio id="wrongSound" src="wrong.mp3"></audio>
+<audio id="timeSound" src="time.mp3"></audio>
+
+<script>
+
+let score = 0;
+let current = 0;
+let time = 10;
+let timer;
+
+let questions = [
+    {
+        q: "Umurwayi afite umuriro. Ni uwuhe muti?",
+        options: ["Paracetamol", "Amoxicillin", "Vitamin C"],
+        answer: "Paracetamol"
+    },
+    {
+        q: "Umurwayi afite infection. Ni uwuhe muti?",
+        options: ["Ibuprofen", "Amoxicillin", "ORS"],
+        answer: "Amoxicillin"
+    },
+    {
+        q: "Umwana afite dehydration. Ni uwuhe muti?",
+        options: ["ORS", "Panadol", "Aspirin"],
+        answer: "ORS"
+    }
+];
+
+function startGame(){
+    document.getElementById("startScreen").style.display = "none";
+    document.getElementById("gameBox").style.display = "block";
+    loadQuestion();
+}
+
+function startTimer(){
+    time = 10;
+    document.getElementById("time").innerText = time;
+
+    timer = setInterval(() => {
+        time--;
+        document.getElementById("time").innerText = time;
+
+        if(time <= 0){
+            clearInterval(timer);
+
+            document.getElementById("timeSound").play();
+
+            document.getElementById("result").innerText = "⏰ Time up!";
+            score -= 5;
+            document.getElementById("score").innerText = score;
+
+            setTimeout(nextQuestion,1000);
+        }
+    },1000);
+}
+
+function loadQuestion(){
+    clearInterval(timer);
+
+    let q = questions[current];
+    document.getElementById("question").innerText = q.q;
+
+    let html = "";
+    q.options.forEach(opt=>{
+        html += `<button class="option-btn" onclick="checkAnswer('${opt}')">${opt}</button>`;
+    });
+
+    document.getElementById("options").innerHTML = html;
+
+    startTimer();
+}
+
+function checkAnswer(selected){
+    clearInterval(timer);
+
+    if(selected === questions[current].answer){
+        score += 10;
+        document.getElementById("result").innerText = "✔ Correct";
+        document.getElementById("correctSound").play();
+    }else{
+        score -= 5;
+        document.getElementById("result").innerText = "❌ Wrong";
+        document.getElementById("wrongSound").play();
+    }
+
+    document.getElementById("score").innerText = score;
+}
+
+function nextQuestion(){
+    current++;
+
+    if(current >= questions.length){
+        alert("Game Over! Score: " + score);
+        restartGame();
+        return;
+    }
+
+    loadQuestion();
+    document.getElementById("result").innerText = "";
+}
+
+function restartGame(){
+    score = 0;
+    current = 0;
+    document.getElementById("score").innerText = score;
+    loadQuestion();
+}
+
+function goBack(){
+    clearInterval(timer);
+    document.getElementById("gameBox").style.display = "none";
+    document.getElementById("startScreen").style.display = "block";
+}
+
+</script>
+
+</body>
+</html>

@@ -25,7 +25,7 @@
     <a href="index.html" data-key="home">HOME</a>
     <a href="SERVICE.HTML" data-key="services">SERVICES</a>
      
-   <a href="APPOINTMENTS.HTML">APPOINTMENT
+   <a href="loginofuser.html">APPOINTMENT</a>
     
     <a href="PHARMACY.HTML" data-key="pharmacy">PHARMACY</a>
     <a href="HEALTH TIPS.HTML" data-key="tips">HEALTH TIPS</a>
@@ -57,42 +57,114 @@
 
   <div class="image-card">
     <img src="iryoyuzuye.jfif">
-    <p class="caption" data-key="diet">Balanced diet</p>
+
+    <p class="caption" data-key="diet">
+      Balanced diet
+    </p>
+
+    <button onclick="likeTip('likes1')">
+      ❤️ Like
+    </button>
+
+    <p id="likes1">0 Likes</p>
   </div>
+
 
   <div class="image-card">
     <img src="gukaraba.jfif">
-    <p class="caption" data-key="wash">wash hand</p>
+
+    <p class="caption" data-key="wash">
+      wash hand
+    </p>
+
+    <button onclick="likeTip('likes2')">
+      ❤️ Like
+    </button>
+
+    <p id="likes2">0 Likes</p>
   </div>
+
 
   <div class="image-card">
     <img src="Gukoraimyitozo.jfif">
-    <p class="caption" data-key="exercise">physical exercises</p>
+
+    <p class="caption" data-key="exercise">
+      physical exercises
+    </p>
+
+    <button onclick="likeTip('likes3')">
+      ❤️ Like
+    </button>
+
+    <p id="likes3">0 Likes</p>
   </div>
+
 
   <div class="image-card">
     <img src="itabi.jfif">
-    <p class="caption" data-key="smoke">no smoking</p>
+
+    <p class="caption" data-key="smoke">
+      no smoking
+    </p>
+
+    <button onclick="likeTip('likes4')">
+      ❤️ Like
+    </button>
+
+    <p id="likes4">0 Likes</p>
   </div>
+
 
   <div class="image-card">
     <img src="amazi.jfif">
-    <p class="caption" data-key="water">drink water</p>
+
+    <p class="caption" data-key="water">
+      drink water
+    </p>
+
+    <button onclick="likeTip('likes5')">
+      ❤️ Like
+    </button>
+
+    <p id="likes5">0 Likes</p>
   </div>
+
 
   <div class="image-card">
     <img src="gusinzira.jfif">
-    <p class="caption" data-key="sleep">sleeping</p>
+
+    <p class="caption" data-key="sleep">
+      sleeping
+    </p>
+
+    <button onclick="likeTip('likes6')">
+      ❤️ Like
+    </button>
+
+    <p id="likes6">0 Likes</p>
   </div>
 
 </div>
 
-<div class="tips-container" id="tipsContainer"></div>
-<h2 style="text-align:center;">Health Tips</h2>
-
-<div id="tipsContainer"></div>
 
 <script>
+
+function likeTip(id) {
+
+  let likeElement =
+    document.getElementById(id);
+
+  let currentLikes =
+    parseInt(likeElement.innerText);
+
+  currentLikes++;
+
+  likeElement.innerText =
+    currentLikes + " Likes";
+
+}
+
+
 
 function loadTips(){
 
@@ -201,7 +273,7 @@ loadTips();
     </div>
 
   </div>
-
+<p style="text-align: center;color: darkgray;"><a style=" text-decoration:none;" href="adimin.html">LOGIN OF ADMIN</a></p>
   <!-- BOTTOM -->
   <div class="footer-bottom">
     <p>© 2026 XYZ District Hospital | All rights reserved</p>
